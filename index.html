@@ -36,7 +36,7 @@
         </div>
         
         <div class="flex items-center gap-4">
-          <button class="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2 rounded-full font-bold transition-colors shadow-md shadow-amber-500/20 flex items-center gap-2 transform hover:-translate-y-0.5">
+          <button onclick="switchView('shop')" class="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2 rounded-full font-bold transition-colors shadow-md shadow-amber-500/20 flex items-center gap-2 transform hover:-translate-y-0.5">
             <i data-lucide="shopping-cart" class="w-4 h-4"></i> <span class="hidden sm:inline">Beli Produk</span>
           </button>
           <button onclick="toggleMobileMenu()" class="md:hidden text-gray-500 hover:text-emerald-600 focus:outline-none p-2">
@@ -51,6 +51,9 @@
         <button onclick="switchView('calculator')" class="text-left px-4 py-3 rounded-xl font-bold text-emerald-700 bg-emerald-50">Kalkulator</button>
         <button onclick="switchView('research')" class="text-left px-4 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-50">Riset Kelor & Katuk</button>
         <button onclick="switchView('about')" class="text-left px-4 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-50">Tentang Kami</button>
+        <button onclick="switchView('shop')" class="text-left px-4 py-3 rounded-xl font-bold text-amber-600 hover:bg-amber-50 flex items-center gap-2">
+          <i data-lucide="store" class="w-5 h-5"></i> Shop (Pesan Sekarang)
+        </button>
       </div>
     </div>
   </nav>
@@ -189,8 +192,8 @@
                       <span>Daun Kelor padatkan gizi & turunkan metana.</span>
                     </li>
                     <li class="flex items-start gap-3">
-                      <i data-lucide="trending-up" class="w-5 h-5 text-emerald-500 flex-shrink-0"></i> 
-                      <span>Peningkatan Produksi Susu 19%.</span>
+                      <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0"></i> 
+                      <span>Peningkatan Produksi Susu Harian 18,74%.</span>
                     </li>
                   </ul>
                 </div>
@@ -209,9 +212,9 @@
             Siap Meraup Profit dari Susu Melimpah?
           </h3>
           <p class="text-emerald-100/90 mb-8 max-w-xl mx-auto relative z-10 font-medium text-lg leading-relaxed">
-            Dapatkan Lacto-Block hari ini. <strong class="text-amber-400">100% Organik dengan Daun Kelor & Katuk.</strong> Terbukti klinis mampu meningkatkan produksi susu hingga 19%.
+            Dapatkan Lacto-Block hari ini. <strong class="text-amber-400">100% Organik dengan Daun Kelor & Katuk.</strong> Terbukti klinis mampu meningkatkan produksi susu harian hingga 18,74%.
           </p>
-          <button class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black py-4 px-10 rounded-full shadow-xl shadow-amber-500/30 transition-transform hover:scale-105 inline-flex items-center gap-3 relative z-10 text-lg">
+          <button onclick="switchView('shop')" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black py-4 px-10 rounded-full shadow-xl shadow-amber-500/30 transition-transform hover:scale-105 inline-flex items-center gap-3 relative z-10 text-lg cursor-pointer">
             <i data-lucide="shopping-cart" class="w-6 h-6"></i> Pesan Lacto-Block Sekarang!
           </button>
         </div>
@@ -263,7 +266,7 @@
           <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
             <span class="text-sm font-bold text-gray-500 uppercase tracking-widest block mb-2">Referensi Jurnal Utama</span>
             <p class="text-sm text-gray-700 font-medium leading-relaxed">
-              Miah, M., Sultana, N., Islam, M.T. et al. (2025). <em>Effects of moringa (Moringa oleifera) silage on milk yield, milk composition and serum biochemical indexes of lactating Pabna cattle.</em> Trop Anim Health Prod 57, 170. DOI: 10.1007/s11250-025-04405-8.
+              Miah, M., Sultana, N., Islam, M.T. et al. (2025). <em>Effects of moringa (Moringa oleifera) silage on milk yield, milk composition and serum biochemical indexes of lactating Pabna cattle.</em> Trop Anim Health Prod 57, 170. <a href="https://doi.org/10.1007/s11250-025-04405-8" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline font-semibold transition-colors">https://doi.org/10.1007/s11250-025-04405-8</a>
             </p>
           </div>
         </div>
@@ -310,6 +313,85 @@
       </div>
     </div>
 
+    <div id="view-shop" class="hidden animation-fade-in bg-stone-50 pb-20">
+      <div class="bg-amber-500 py-16 text-center px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="2" fill="#ffffff" />
+              </pattern>
+            </defs>
+            <rect x="0" y="0" width="100%" height="100%" fill="url(#dotPattern)" />
+          </svg>
+        </div>
+        <div class="relative z-10">
+          <span class="bg-white text-amber-600 px-4 py-1.5 rounded-full text-sm font-black tracking-widest uppercase mb-4 inline-block shadow-sm">Segera Hadir</span>
+          <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Pesan Lacto-Block</h1>
+          <p class="text-amber-50 max-w-2xl mx-auto text-lg font-medium">Kami sedang mempersiapkan jalur distribusi terbaik agar produk unggulan kami bisa tiba di peternakan Anda dengan cepat dan aman.</p>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-4 mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg relative overflow-hidden group">
+            <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-black px-3 py-1 rounded-full">OPENING SOON</div>
+            <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 group-hover:scale-110 transition-transform">
+              <i data-lucide="shopping-bag" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-2xl font-black text-gray-800 mb-2">E-Commerce Terpercaya</h3>
+            <p class="text-gray-500 mb-6">Pesan dengan aman melalui platform marketplace favorit Anda. Gratis ongkir dan banyak promo menanti.</p>
+            <ul class="space-y-3 font-medium text-gray-600">
+              <li class="flex items-center gap-3"><span class="w-2 h-2 bg-emerald-400 rounded-full"></span> Tokopedia (LactoBlock Official)</li>
+              <li class="flex items-center gap-3"><span class="w-2 h-2 bg-orange-400 rounded-full"></span> Shopee (lactoblock.id)</li>
+              <li class="flex items-center gap-3"><span class="w-2 h-2 bg-black rounded-full"></span> TikTok Shop (@lactoblock)</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg relative overflow-hidden group">
+            <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-black px-3 py-1 rounded-full">OPENING SOON</div>
+            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-green-600 group-hover:scale-110 transition-transform">
+              <i data-lucide="message-circle" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-2xl font-black text-gray-800 mb-2">Konsultasi & Pemesanan B2B</h3>
+            <p class="text-gray-500 mb-6">Butuh pesanan dalam partai besar untuk koperasi atau pabrik? Hubungi tim penjualan kami langsung.</p>
+            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+              <span class="block text-sm text-gray-400 font-bold uppercase mb-1">WhatsApp Admin</span>
+              <span class="text-xl font-black text-gray-700 tracking-wide">+62 812-XXXX-XXXX</span>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg relative overflow-hidden group">
+            <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-black px-3 py-1 rounded-full">OPENING SOON</div>
+            <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center mb-6 text-pink-600 group-hover:scale-110 transition-transform">
+              <i data-lucide="instagram" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-2xl font-black text-gray-800 mb-2">Ikuti Media Sosial Kami</h3>
+            <p class="text-gray-500 mb-6">Dapatkan tips beternak sapi perah harian dan informasi peluncuran produk pertama dari akun resmi kami.</p>
+            <div class="flex flex-col gap-3 font-bold text-gray-700">
+              <a href="#" class="flex items-center gap-3 hover:text-pink-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i> @lactoblock.id</a>
+              <a href="#" class="flex items-center gap-3 hover:text-blue-600 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i> Lacto-Block Indonesia</a>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg relative overflow-hidden group">
+            <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-black px-3 py-1 rounded-full">OPENING SOON</div>
+            <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform">
+              <i data-lucide="store" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-2xl font-black text-gray-800 mb-2">Toko Pakan Ternak Terdekat</h3>
+            <p class="text-gray-500 mb-6">Kami sedang menjalin kemitraan dengan jaringan toko pakan hewan ternak (Poultry Shop) di seluruh Jawa Timur.</p>
+            <div class="flex items-center gap-3 text-emerald-700 font-bold bg-emerald-50 px-4 py-3 rounded-xl">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+              <span>Segera tersedia di kota Anda.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <footer class="bg-white border-t border-gray-200 py-10 mt-auto">
@@ -322,7 +404,7 @@
         Inovasi Pakan Suplemen Berbasis Daun Kelor & Katuk untuk Peternak Indonesia yang Lebih Sejahtera.
       </p>
       <div class="text-gray-400 font-bold text-sm tracking-widest uppercase">
-        &copy; 2026 Tim Kucing Hitam - UNESA
+        &copy; 2026 Tim Kucing Hitam - FEB UNESA
       </div>
     </div>
   </footer>
@@ -336,12 +418,16 @@
     }
 
     function switchView(viewName) {
+      // Sembunyikan semua konten
       document.getElementById('view-calculator').classList.add('hidden');
       document.getElementById('view-research').classList.add('hidden');
       document.getElementById('view-about').classList.add('hidden');
+      document.getElementById('view-shop').classList.add('hidden');
       
+      // Tampilkan halaman yang dipilih
       document.getElementById('view-' + viewName).classList.remove('hidden');
       
+      // Atur status menu navigasi desktop
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-emerald-700', 'border-emerald-600');
         btn.classList.add('text-gray-500', 'border-transparent');
@@ -352,7 +438,10 @@
         activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
       }
 
+      // Tutup menu seluler jika sedang terbuka
       document.getElementById('mobileMenu').classList.add('hidden');
+      
+      // Gulir halaman ke posisi atas
       window.scrollTo(0, 0);
     }
 
