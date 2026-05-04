@@ -18,6 +18,12 @@
       animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     html { scroll-behavior: smooth; }
+    
+    /* Scrollbar Kustom untuk Kotak Referensi */
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
 </head>
 <body class="min-h-screen bg-stone-50 font-sans text-gray-800 selection:bg-emerald-200 flex flex-col">
@@ -65,6 +71,7 @@
 
   <div class="flex-grow">
     
+    <!-- HALAMAN 1: KALKULATOR -->
     <div id="view-calculator" class="animation-fade-in block">
       <header class="relative bg-emerald-900 overflow-hidden text-white py-20 px-4">
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
@@ -226,6 +233,7 @@
       </div>
     </div>
 
+    <!-- HALAMAN 2: TENTANG KAMI (PENGENALAN PRODUK) -->
     <div id="view-tentangkami" class="hidden animation-fade-in bg-white pb-20">
       
       <div class="bg-emerald-900 pt-20 pb-24 text-center px-4 relative overflow-hidden">
@@ -319,6 +327,7 @@
       </div>
     </div>
 
+    <!-- HALAMAN 3: RISET -->
     <div id="view-research" class="hidden animation-fade-in bg-white">
       <div class="bg-emerald-900 py-16 text-center px-4">
         <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Landasan Sains Lacto-Block</h1>
@@ -362,15 +371,34 @@
           </ul>
 
           <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
-            <span class="text-sm font-bold text-gray-500 uppercase tracking-widest block mb-2">Referensi Jurnal Utama</span>
-            <p class="text-sm text-gray-700 font-medium leading-relaxed">
-              Miah, M., Sultana, N., Islam, M.T. et al. (2025). <em>Effects of moringa (Moringa oleifera) silage on milk yield, milk composition and serum biochemical indexes of lactating Pabna cattle.</em> Trop Anim Health Prod 57, 170. <a href="https://doi.org/10.1007/s11250-025-04405-8" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline font-semibold transition-colors">https://doi.org/10.1007/s11250-025-04405-8</a>
-            </p>
+            <span class="text-sm font-bold text-gray-500 uppercase tracking-widest block mb-4">Referensi:</span>
+            
+            <div class="max-h-64 overflow-y-auto pr-4 custom-scrollbar">
+              <ol class="list-decimal pl-5 space-y-3 text-sm text-gray-700 font-medium leading-relaxed">
+                <li>Ammar, M., Russo, G. L., Altamimi, A., Altamimi, M., Sabbah, M., & Al-asmar, A. (2025). Moringa oleifera Supplementation as a Natural Galactagogue : A Systematic Review on Its Role in Supporting Milk Volume and Prolactin Levels. 1–14.</li>
+                <li>Apriningsih, A., Hanifah, L., & Nasrullah, N. (2025). The Effect of Extracts from Katuk and Torbangun Leaves on Total Phenol Content as a Breastfeeding Enhancer. 02007.</li>
+                <li>Cohen-zinder, M., Shor-shimoni, E., Glasser, T., Leibovich, H., David, T., Argov-argaman, N., & Shabtay, A. (2025). Dietary Moringa oleifera improves goat milk quality : Benefits for human nutrition and the dairy industry. Food Chemistry, 479(March), 143786. <a href="https://doi.org/10.1016/j.foodchem.2025.143786" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.1016/j.foodchem.2025.143786</a></li>
+                <li>Cota, L. O., Júnior, O. S., Oliveira, A. P. L., Paz, C. F. R., Maróstica, T. P., Duarte, P. C., Leme, F. O. P., & Faleiros, R. R. (2022). Journal of Equine Veterinary Science Oral supplementation with Lithothamnion extract in horses subjected to oligofructose overload intake : effects on systemic inflammation and multiple organ function. 117(281). <a href="https://doi.org/10.1016/j.jevs.2022.104082" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.1016/j.jevs.2022.104082</a></li>
+                <li>Fadhilah, N., Rahfiludin, M. Z., Lestantyo, D., & Winarni, S. (2025). The Effects of Consumption Habits of Vegetables Rich in Galactagogue on Breastfeeding Intensity. Media Kesehatan Masyarakat Indonesia, 21(4 SE-Articles), 349–358. <a href="https://doi.org/10.65844/mkmi.v21i4.46908" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.65844/mkmi.v21i4.46908</a></li>
+                <li>Karyamsetty, H. J. (2024). Exploring the potential of vertical farming in Oman : opportunities for advancing agriculture and entrepreneurship toward vision 2040. <a href="https://doi.org/10.1108/JADEE-12-2024-0428" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.1108/JADEE-12-2024-0428</a></li>
+                <li>Lee, S., Ko, K., Kim, G., & Younchul, J. P. (2026). Impact of methane-mitigating concentrate feed on milk production , composition , and udder health in Holstein cows. 1–13.</li>
+                <li>Li, H., Parcell, J., & Roach, A. (2025). Optimizing the Controlled Environment Agriculture Supply Chain : A Case Study for St . Louis , USA. 1–18.</li>
+                <li>Miah, M., Sultana, N., Islam, T., Ferdousi, S., Gautam, S., & Deb, K. (2025). Effects of moringa ( Moringa oleifera ) silage on milk yield , milk composition and serum biochemical indexes of lactating Pabna cattle. Tropical Animal Health and Production, 57(3), 1–10. <a href="https://doi.org/10.1007/s11250-025-04405-8" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.1007/s11250-025-04405-8</a></li>
+                <li>Purwoto, H., Purnamasari, A. P., Rusbana, T. B., Nurtiana, W., Primasari, R., Putri, G., Soraya, M., & Laksono, H. (2026). Optimization of Sweet Leaf ( Sauropus androgynus L . Merr )– Amaranth ( Amaranthus hybridus L .) Vegetable Leather With Carrageenan and Sorbitol. 2026. <a href="https://doi.org/10.1155/sci5/5572976" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.1155/sci5/5572976</a></li>
+                <li>Tahiru, R., Amoako, M., & Apprey, C. (2025). Effect of a ginger-spiced millet-soya drink and breastfeeding education on prolactin levels and breast milk volumes in postpartum mothers in northern Ghana : a randomized controlled trial. 0.</li>
+                <li>Vrtkov, I., Dole, P., Langov, L., & Kou, P. (2026). Impact of claw lesions on dairy cow energy-corrected milk yield : Differential and persistent effects up to 120 days post-treatment. 32(February). <a href="https://doi.org/10.1016/j.vas.2026.100605" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.1016/j.vas.2026.100605</a></li>
+                <li>Yang, Y. (2025). Impact of Moringa oleifera seed milk coagulant on the quality of fresh buffalo milk cheese during processing and storage. Journal of Dairy Science, 108(8), 7979–7995. <a href="https://doi.org/10.3168/jds.2025-26666" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.3168/jds.2025-26666</a></li>
+                <li>Zhao, X., Degen, A., Hao, L., & Liu, S. (2022). Ruminant Lick Blocks , Particularly in China : A Review. 1–19.</li>
+                <li>Zilberman, D., Hochman, G., & Basso, B. (2024). An economic perspective of the circular bioeconomy in the food and agricultural sector. Communications Earth & Environment, 1–9. <a href="https://doi.org/10.1038/s43247-024-01663-6" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:text-emerald-800 underline break-all">https://doi.org/10.1038/s43247-024-01663-6</a></li>
+              </ol>
+            </div>
+            
           </div>
         </div>
       </div>
     </div>
 
+    <!-- HALAMAN 4: BEHIND US -->
     <div id="view-about" class="hidden animation-fade-in bg-stone-50">
       <div class="max-w-5xl mx-auto px-4 py-16">
         
@@ -400,7 +428,9 @@
           </div>
 
           <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 flex flex-col items-center text-center transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <img src="https://i.ibb.co.com/twSBJnxM/Romi-Ami-Safaroz-Foto-Diri-1.jpg" alt="Romi Ami Safaroz" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-white shadow-lg">
+            <div class="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center mb-6 border-4 border-white shadow-lg">
+              <i data-lucide="briefcase" class="w-12 h-12 text-blue-600"></i>
+            </div>
             <h3 class="text-2xl font-black text-gray-800 mb-1">Romi Ami Safaroz</h3>
             <span class="text-blue-600 font-bold mb-4">Perencana Bisnis & Strategi</span>
             <p class="text-gray-500 font-medium">Mengelola operasional proyek, merancang model bisnis yang layak (viable), dan memastikan inovasi produk selaras dengan kebutuhan pasar peternakan.</p>
@@ -409,6 +439,7 @@
       </div>
     </div>
 
+    <!-- HALAMAN 5: SHOP -->
     <div id="view-shop" class="hidden animation-fade-in bg-stone-50 pb-20">
       <div class="bg-amber-500 py-16 text-center px-4 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20">
