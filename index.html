@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lacto-Calc | Inovasi Pakan Sapi Perah</title>
+  <title>Lacto-Block | Inovasi Pakan Sapi Perah</title>
   
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z'/><path d='M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12'/></svg>" />
 
@@ -34,6 +34,7 @@
         
         <div class="hidden md:flex space-x-8">
           <button onclick="switchView('calculator')" id="nav-calculator" class="nav-btn text-emerald-700 font-bold border-b-2 border-emerald-600 pb-1">Lacto-Calc</button>
+          <button onclick="switchView('tentangkami')" id="nav-tentangkami" class="nav-btn text-gray-500 hover:text-emerald-600 font-medium transition-colors pb-1 border-b-2 border-transparent">Tentang Kami</button>
           <button onclick="switchView('research')" id="nav-research" class="nav-btn text-gray-500 hover:text-emerald-600 font-medium transition-colors pb-1 border-b-2 border-transparent">Riset Kelor & Katuk</button>
           <button onclick="switchView('about')" id="nav-about" class="nav-btn text-gray-500 hover:text-emerald-600 font-medium transition-colors pb-1 border-b-2 border-transparent">Behind Us</button>
         </div>
@@ -52,6 +53,7 @@
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-emerald-100 shadow-xl absolute w-full z-40">
       <div class="flex flex-col px-4 pt-2 pb-4 space-y-1">
         <button onclick="switchView('calculator')" class="text-left px-4 py-3 rounded-xl font-bold text-emerald-700 bg-emerald-50">Lacto-Calc</button>
+        <button onclick="switchView('tentangkami')" class="text-left px-4 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-50">Tentang Kami</button>
         <button onclick="switchView('research')" class="text-left px-4 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-50">Riset Kelor & Katuk</button>
         <button onclick="switchView('about')" class="text-left px-4 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-50">Behind Us</button>
         <button onclick="switchView('shop')" class="text-left px-4 py-3 rounded-xl font-bold text-amber-600 hover:bg-amber-50 flex items-center gap-2">
@@ -220,6 +222,104 @@
           <button onclick="switchView('shop')" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black py-4 px-10 rounded-full shadow-xl shadow-amber-500/30 transition-transform hover:scale-105 inline-flex items-center gap-3 relative z-10 text-lg cursor-pointer">
             <i data-lucide="shopping-cart" class="w-6 h-6"></i> Pesan Lacto-Block Sekarang!
           </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-tentangkami" class="hidden animation-fade-in bg-white pb-20">
+      
+      <div class="bg-emerald-900 pt-20 pb-24 text-center px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+          <span class="text-amber-400 font-bold tracking-widest uppercase text-sm mb-4 block">Mengenal Lebih Dekat</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">Solusi Cerdas untuk <br /> <span class="text-amber-500">Kapasitas Susu Optimal</span></h1>
+          <p class="text-emerald-100 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Lacto-Block hadir sebagai suplemen pakan masa depan yang menjembatani kebutuhan nutrisi harian ternak dengan kemudahan aplikasi di kandang.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 -mt-10 relative z-20">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+          <div class="md:w-1/2 relative min-h-[300px]">
+            <img src="https://images.unsplash.com/photo-1528475564295-8eb473347b74?auto=format&fit=crop&q=80&w=800" alt="Ilustrasi Sapi Perah" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/80 to-transparent flex items-end p-8">
+              <span class="text-white font-medium text-sm">Peternakan sehat berawal dari nutrisi yang akurat.</span>
+            </div>
+          </div>
+          <div class="md:w-1/2 p-8 md:p-12">
+            <h2 class="text-3xl font-black text-emerald-900 mb-4">Galaktagog Alami dalam Satu Genggaman</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              Lacto-Block adalah inovasi <strong>Urea Molasses Block (UMB)</strong> yang secara khusus difortifikasi dengan Ekstrak Daun Katuk dan Kelor. Konsep UMB bekerja layaknya <em>energy bar</em> bagi manusia; bentuknya padat, tahan lama, dan dirancang untuk dijilat oleh sapi secara perlahan guna menyuplai kebutuhan mineral, protein, dan energi tanpa risiko overdosis urea.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              Di saat pakan konvensional hanya fokus pada penggemukan, formulasi kami bekerja spesifik sebagai <strong>Galaktagog</strong>—senyawa alami peningkat produksi susu.
+            </p>
+            <div class="flex items-center gap-4 bg-emerald-50 p-4 rounded-xl">
+              <i data-lucide="shield-check" class="w-8 h-8 text-emerald-600 flex-shrink-0"></i>
+              <p class="text-sm font-bold text-emerald-900">Aman untuk mikrobia rumen dan mudah dicerna oleh sapi masa laktasi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-4 mt-20">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-black text-gray-800">Purwarupa Produk (Prototype)</h2>
+          <p class="text-gray-500 mt-2">Bentuk fisik yang dirancang menyesuaikan anatomi rongga mulut ruminansia.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          <div class="order-2 lg:order-1 space-y-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="layers" class="w-6 h-6 text-amber-700"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-black text-gray-800 mb-1">Tekstur Padat Lick-Block</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">Berbentuk blok yang mengeras, memastikan sapi mengonsumsinya dengan cara menjilat (licking). Mekanisme ini mencegah sapi rakus makan terlalu cepat dan merangsang produksi saliva yang berfungsi sebagai *buffer* (penyeimbang pH) alami dalam lambung.</p>
+              </div>
+            </div>
+            
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="leafy-green" class="w-6 h-6 text-emerald-700"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-black text-gray-800 mb-1">Inklusi Ekstrak Superfood</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">Mengandung rasio daun katuk (Sauropus androgynus) untuk menggenjot hormon laktasi dan daun kelor (Moringa oleifera) yang berperan sebagai pasokan asam amino esensial sekaligus agen penurun emisi metana peternakan.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="flask-conical" class="w-6 h-6 text-blue-700"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-black text-gray-800 mb-1">Molase & Urea Presisi</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">Berbahan dasar tetes tebu (molase) yang memberikan aroma manis penambah nafsu makan, dipadukan dengan senyawa nitrogen (Urea) dalam ambang batas klinis sebagai pendorong pertumbuhan bakteri baik pada rumen.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-1 lg:order-2">
+            <div class="relative w-full aspect-square max-w-md mx-auto">
+              <div class="absolute inset-0 bg-amber-900 rounded-3xl transform rotate-3 scale-105 opacity-20 blur-lg"></div>
+              <div class="relative h-full bg-gradient-to-br from-amber-700 via-amber-800 to-amber-900 rounded-3xl shadow-2xl p-8 flex flex-col items-center justify-center border-t-2 border-l-2 border-amber-600 overflow-hidden group">
+                
+                <div class="absolute inset-0 opacity-30 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1628189679165-4f40f2f3e827?auto=format&fit=crop&q=80&w=400'); background-size: cover;"></div>
+                
+                <i data-lucide="box" class="w-24 h-24 text-amber-500/50 mb-4 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-3xl font-black text-amber-100 text-center tracking-wide shadow-black drop-shadow-md relative z-10">LACTO-BLOCK</h3>
+                <span class="bg-amber-100 text-amber-900 text-xs font-black px-3 py-1 rounded-full mt-4 uppercase tracking-widest relative z-10 shadow-sm">Premium UMB</span>
+                <p class="text-amber-200/80 text-center text-sm mt-6 font-medium relative z-10 px-4">
+                  Visualisasi ilustratif tekstur padat cokelat gelap khas molase yang diperkaya hijau serbuk kelor.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -421,30 +521,26 @@
     }
 
     function switchView(viewName) {
-      // Sembunyikan semua konten
       document.getElementById('view-calculator').classList.add('hidden');
+      document.getElementById('view-tentangkami').classList.add('hidden');
       document.getElementById('view-research').classList.add('hidden');
       document.getElementById('view-about').classList.add('hidden');
       document.getElementById('view-shop').classList.add('hidden');
       
-      // Tampilkan halaman yang dipilih
       document.getElementById('view-' + viewName).classList.remove('hidden');
       
-      // Atur status menu navigasi desktop
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-emerald-700', 'border-emerald-600');
         btn.classList.add('text-gray-500', 'border-transparent');
       });
+      
       const activeBtn = document.getElementById('nav-' + viewName);
       if(activeBtn) {
         activeBtn.classList.remove('text-gray-500', 'border-transparent');
         activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
       }
 
-      // Tutup menu seluler jika sedang terbuka
       document.getElementById('mobileMenu').classList.add('hidden');
-      
-      // Gulir halaman ke posisi atas
       window.scrollTo(0, 0);
     }
 
