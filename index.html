@@ -278,13 +278,13 @@
               </div>
               <div>
                 <h3 class="text-xl font-black text-gray-800 mb-1">Tekstur Padat Lick-Block</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">Berbentuk blok yang mengeras, memastikan sapi mengonsumsinya dengan cara menjilat (licking). Mekanisme ini mencegah sapi rakus makan terlalu cepat dan merangsang produksi saliva yang berfungsi sebagai *buffer* (penyeimbang pH) alami dalam lambung.</p>
+                <p class="text-gray-600 text-sm leading-relaxed">Berbentuk blok yang mengeras, memastikan sapi mengonsumsinya dengan cara menjilat (licking). Mekanisme ini mencegah sapi rakus makan terlalu cepat dan merangsang produksi saliva yang berfungsi sebagai buffer (penyeimbang pH) alami dalam lambung.</p>
               </div>
             </div>
             
             <div class="flex gap-4">
               <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i data-lucide="leaf leafy-green" class="w-6 h-6 text-emerald-700"></i>
+                <i data-lucide="leaf" class="w-6 h-6 text-emerald-700"></i>
               </div>
               <div>
                 <h3 class="text-xl font-black text-gray-800 mb-1">Inklusi Ekstrak Superfood</h3>
@@ -463,13 +463,13 @@
           <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg relative overflow-hidden group">
             <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-black px-3 py-1 rounded-full">OPENING SOON</div>
             <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center mb-6 text-pink-600 group-hover:scale-110 transition-transform">
-              <i data-lucide="instagram" class="w-7 h-7"></i>
+              <i data-lucide="share-2" class="w-7 h-7"></i>
             </div>
             <h3 class="text-2xl font-black text-gray-800 mb-2">Ikuti Media Sosial Kami</h3>
             <p class="text-gray-500 mb-6">Dapatkan tips beternak sapi perah harian dan informasi peluncuran produk pertama dari akun resmi kami.</p>
             <div class="flex flex-col gap-3 font-bold text-gray-700">
-              <a href="#" class="flex items-center gap-3 hover:text-pink-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i> @lactoblock.id</a>
-              <a href="#" class="flex items-center gap-3 hover:text-blue-600 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i> Lacto-Block Indonesia</a>
+              <a href="#" class="flex items-center gap-3 hover:text-pink-600 transition-colors"><i data-lucide="at-sign" class="w-5 h-5"></i> @lactoblock.id</a>
+              <a href="#" class="flex items-center gap-3 hover:text-blue-600 transition-colors"><i data-lucide="users" class="w-5 h-5"></i> Lacto-Block Indonesia</a>
             </div>
           </div>
 
@@ -516,14 +516,17 @@
     }
 
     function switchView(viewName) {
+      // Sembunyikan semua konten
       document.getElementById('view-calculator').classList.add('hidden');
       document.getElementById('view-tentangkami').classList.add('hidden');
       document.getElementById('view-research').classList.add('hidden');
       document.getElementById('view-about').classList.add('hidden');
       document.getElementById('view-shop').classList.add('hidden');
       
+      // Tampilkan halaman yang dipilih
       document.getElementById('view-' + viewName).classList.remove('hidden');
       
+      // Atur status menu navigasi desktop
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-emerald-700', 'border-emerald-600');
         btn.classList.add('text-gray-500', 'border-transparent');
@@ -535,7 +538,10 @@
         activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
       }
 
+      // Tutup menu seluler jika sedang terbuka
       document.getElementById('mobileMenu').classList.add('hidden');
+      
+      // Gulir halaman ke posisi atas
       window.scrollTo(0, 0);
     }
 
