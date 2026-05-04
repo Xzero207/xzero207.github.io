@@ -18,12 +18,6 @@
       animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     html { scroll-behavior: smooth; }
-    
-    /* Scrollbar Kustom untuk Kotak Referensi */
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
 </head>
 <body class="min-h-screen bg-stone-50 font-sans text-gray-800 selection:bg-emerald-200 flex flex-col">
@@ -71,7 +65,6 @@
 
   <div class="flex-grow">
     
-    <!-- HALAMAN 1: KALKULATOR -->
     <div id="view-calculator" class="animation-fade-in block">
       <header class="relative bg-emerald-900 overflow-hidden text-white py-20 px-4">
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
@@ -233,7 +226,6 @@
       </div>
     </div>
 
-    <!-- HALAMAN 2: TENTANG KAMI (PENGENALAN PRODUK) -->
     <div id="view-tentangkami" class="hidden animation-fade-in bg-white pb-20">
       
       <div class="bg-emerald-900 pt-20 pb-24 text-center px-4 relative overflow-hidden">
@@ -327,7 +319,6 @@
       </div>
     </div>
 
-    <!-- HALAMAN 3: RISET -->
     <div id="view-research" class="hidden animation-fade-in bg-white">
       <div class="bg-emerald-900 py-16 text-center px-4">
         <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Landasan Sains Lacto-Block</h1>
@@ -398,7 +389,6 @@
       </div>
     </div>
 
-    <!-- HALAMAN 4: BEHIND US -->
     <div id="view-about" class="hidden animation-fade-in bg-stone-50">
       <div class="max-w-5xl mx-auto px-4 py-16">
         
@@ -419,18 +409,14 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 flex flex-col items-center text-center transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="w-32 h-32 bg-emerald-100 rounded-full flex items-center justify-center mb-6 border-4 border-white shadow-lg">
-              <i data-lucide="flask-conical" class="w-12 h-12 text-emerald-600"></i>
-            </div>
+            <img src="https://i.ibb.co.com/zVLKky2M/IMG-20260504-WA0006.jpg" alt="Diah Loka Ratna Devi" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-white shadow-lg">
             <h3 class="text-2xl font-black text-gray-800 mb-1">Diah Loka Ratna Devi</h3>
             <span class="text-emerald-600 font-bold mb-4">Spesialis Riset & Pengembangan</span>
             <p class="text-gray-500 font-medium">Berfokus pada analisa literatur ilmiah dan pengembangan formulasi nutrisi presisi yang mengintegrasikan bahan organik lokal bernilai tinggi.</p>
           </div>
 
           <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 flex flex-col items-center text-center transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center mb-6 border-4 border-white shadow-lg">
-              <i data-lucide="briefcase" class="w-12 h-12 text-blue-600"></i>
-            </div>
+            <img src="https://i.ibb.co.com/twSBJnxM/Romi-Ami-Safaroz-Foto-Diri-1.jpg" alt="Romi Ami Safaroz" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-white shadow-lg">
             <h3 class="text-2xl font-black text-gray-800 mb-1">Romi Ami Safaroz</h3>
             <span class="text-blue-600 font-bold mb-4">Perencana Bisnis & Strategi</span>
             <p class="text-gray-500 font-medium">Mengelola operasional proyek, merancang model bisnis yang layak (viable), dan memastikan inovasi produk selaras dengan kebutuhan pasar peternakan.</p>
@@ -439,7 +425,6 @@
       </div>
     </div>
 
-    <!-- HALAMAN 5: SHOP -->
     <div id="view-shop" class="hidden animation-fade-in bg-stone-50 pb-20">
       <div class="bg-amber-500 py-16 text-center px-4 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20">
@@ -545,14 +530,17 @@
     }
 
     function switchView(viewName) {
+      // Sembunyikan semua konten
       document.getElementById('view-calculator').classList.add('hidden');
       document.getElementById('view-tentangkami').classList.add('hidden');
       document.getElementById('view-research').classList.add('hidden');
       document.getElementById('view-about').classList.add('hidden');
       document.getElementById('view-shop').classList.add('hidden');
       
+      // Tampilkan halaman yang dipilih
       document.getElementById('view-' + viewName).classList.remove('hidden');
       
+      // Atur status menu navigasi desktop
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-emerald-700', 'border-emerald-600');
         btn.classList.add('text-gray-500', 'border-transparent');
@@ -564,7 +552,10 @@
         activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
       }
 
+      // Tutup menu seluler jika sedang terbuka
       document.getElementById('mobileMenu').classList.add('hidden');
+      
+      // Gulir halaman ke posisi atas
       window.scrollTo(0, 0);
     }
 
