@@ -18,6 +18,12 @@
       animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     html { scroll-behavior: smooth; }
+    
+    /* Scrollbar Kustom untuk Kotak Referensi */
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
 </head>
 <body class="min-h-screen bg-stone-50 font-sans text-gray-800 selection:bg-emerald-200 flex flex-col">
@@ -65,6 +71,7 @@
 
   <div class="flex-grow">
     
+    <!-- HALAMAN 1: KALKULATOR -->
     <div id="view-calculator" class="animation-fade-in block">
       <header class="relative bg-emerald-900 overflow-hidden text-white py-20 px-4">
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
@@ -226,6 +233,7 @@
       </div>
     </div>
 
+    <!-- HALAMAN 2: TENTANG KAMI (PENGENALAN PRODUK) -->
     <div id="view-tentangkami" class="hidden animation-fade-in bg-white pb-20">
       
       <div class="bg-emerald-900 pt-20 pb-24 text-center px-4 relative overflow-hidden">
@@ -319,6 +327,7 @@
       </div>
     </div>
 
+    <!-- HALAMAN 3: RISET (Diperbarui dengan Kelor & Katuk) -->
     <div id="view-research" class="hidden animation-fade-in bg-white">
       <div class="bg-emerald-900 py-16 text-center px-4">
         <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Landasan Sains Lacto-Block</h1>
@@ -329,11 +338,11 @@
         <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
           <div class="flex items-center gap-3 mb-6">
             <i data-lucide="microscope" class="w-8 h-8 text-emerald-600"></i>
-            <h2 class="text-3xl font-black text-gray-800">Bukti Klinis Efektivitas Daun Kelor</h2>
+            <h2 class="text-3xl font-black text-gray-800">Sinergi Daun Kelor & Daun Katuk</h2>
           </div>
           
           <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-            Daun kelor bukan sekadar pakan alternatif peninggalan orang tua dulu. Secara klinis, kelor adalah solusi nutrisi yang teruji efektif untuk memperbaiki kualitas pakan ternak kita. Berdasarkan studi yang dipublikasikan dalam <em>Tropical Animal Health and Production</em> (2025), penambahan silase kelor pada ransum pakan sapi perah memberikan dampak signifikan terhadap profitabilitas dan kesehatan ternak.
+            Daun kelor dan katuk bukan sekadar pakan alternatif peninggalan orang tua dulu. Secara klinis, keduanya adalah solusi nutrisi fungsional yang teruji efektif untuk memperbaiki kualitas pakan dan kesehatan ternak kita.
           </p>
 
           <h3 class="text-xl font-black text-gray-800 mb-4 border-b pb-2">Temuan Utama Riset</h3>
@@ -342,21 +351,28 @@
               <div class="bg-emerald-100 p-2 rounded-lg mt-1"><i data-lucide="trending-up" class="w-5 h-5 text-emerald-700"></i></div>
               <div>
                 <strong class="text-gray-800 block text-lg">Peningkatan Volume & Kualitas Susu</strong>
-                <p class="text-gray-600">Diet berbasis kelor terbukti secara signifikan meningkatkan total produksi susu harian. Peningkatan ini diikuti oleh naiknya kadar protein dan laktosa dalam susu, yang berujung pada tingginya harga jual di tingkat koperasi atau industri.</p>
+                <p class="text-gray-600">Berdasarkan studi pada <em>Tropical Animal Health and Production</em>, suplementasi daun kelor (Moringa oleifera) terbukti secara signifikan meningkatkan total produksi susu harian. Peningkatan ini diikuti oleh naiknya kadar protein dan laktosa dalam susu, yang berujung pada tingginya harga jual di tingkat koperasi.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="bg-pink-100 p-2 rounded-lg mt-1"><i data-lucide="sparkles" class="w-5 h-5 text-pink-700"></i></div>
+              <div>
+                <strong class="text-gray-800 block text-lg">Kaya Senyawa Bioaktif & Antioksidan</strong>
+                <p class="text-gray-600">Selain kelor, daun katuk (Sauropus androgynus) terbukti secara ilmiah kaya akan senyawa bioaktif fungsional. Analisis menunjukkan kandungan klorofil yang tinggi dan aktivitas antioksidan mencapai 76%, yang krusial untuk menunjang daya tahan tubuh dan produktivitas harian ternak.</p>
               </div>
             </li>
             <li class="flex items-start gap-4">
               <div class="bg-amber-100 p-2 rounded-lg mt-1"><i data-lucide="activity" class="w-5 h-5 text-amber-700"></i></div>
               <div>
                 <strong class="text-gray-800 block text-lg">Optimalisasi Pencernaan (Digestibilitas)</strong>
-                <p class="text-gray-600">Sapi yang mengonsumsi silase kelor mencatatkan tingkat kecernaan Bahan Kering (DM) dan Protein Kasar (CP) yang jauh lebih tinggi. Artinya, pakan terserap maksimal menjadi daging dan susu, meminimalkan nutrisi yang terbuang melalui feses.</p>
+                <p class="text-gray-600">Konsumsi pakan berbasis kelor mencatatkan tingkat kecernaan Bahan Kering (DM), Protein Kasar (CP), serta fraksi serat (ADF dan NDF) yang jauh lebih tinggi. Artinya, nutrisi pakan terserap maksimal dan limbah terbuang menjadi lebih sedikit.</p>
               </div>
             </li>
             <li class="flex items-start gap-4">
               <div class="bg-blue-100 p-2 rounded-lg mt-1"><i data-lucide="shield-check" class="w-5 h-5 text-blue-700"></i></div>
               <div>
                 <strong class="text-gray-800 block text-lg">Profil Kesehatan Darah yang Superior</strong>
-                <p class="text-gray-600">Intervensi kelor secara medis menurunkan kadar glukosa, kreatinin, serta kolesterol jahat (LDL) dalam darah sapi. Secara bersamaan, kadar kalsium darah meningkat, yang sangat krusial untuk mencegah kelumpuhan pasca-melahirkan (milk fever) pada sapi perah tinggi produksi.</p>
+                <p class="text-gray-600">Intervensi nutrisi kelor secara medis menurunkan kadar glukosa, kreatinin, serta kolesterol jahat (LDL) dalam darah. Secara bersamaan, kadar kalsium darah meningkat secara signifikan, sebuah indikator penting untuk mencegah kelumpuhan pasca-melahirkan (milk fever) pada sapi perah.</p>
               </div>
             </li>
           </ul>
@@ -389,6 +405,7 @@
       </div>
     </div>
 
+    <!-- HALAMAN 4: BEHIND US -->
     <div id="view-about" class="hidden animation-fade-in bg-stone-50">
       <div class="max-w-5xl mx-auto px-4 py-16">
         
@@ -425,6 +442,7 @@
       </div>
     </div>
 
+    <!-- HALAMAN 5: SHOP -->
     <div id="view-shop" class="hidden animation-fade-in bg-stone-50 pb-20">
       <div class="bg-amber-500 py-16 text-center px-4 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20">
@@ -530,17 +548,14 @@
     }
 
     function switchView(viewName) {
-      // Sembunyikan semua konten
       document.getElementById('view-calculator').classList.add('hidden');
       document.getElementById('view-tentangkami').classList.add('hidden');
       document.getElementById('view-research').classList.add('hidden');
       document.getElementById('view-about').classList.add('hidden');
       document.getElementById('view-shop').classList.add('hidden');
       
-      // Tampilkan halaman yang dipilih
       document.getElementById('view-' + viewName).classList.remove('hidden');
       
-      // Atur status menu navigasi desktop
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-emerald-700', 'border-emerald-600');
         btn.classList.add('text-gray-500', 'border-transparent');
@@ -552,10 +567,7 @@
         activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
       }
 
-      // Tutup menu seluler jika sedang terbuka
       document.getElementById('mobileMenu').classList.add('hidden');
-      
-      // Gulir halaman ke posisi atas
       window.scrollTo(0, 0);
     }
 
