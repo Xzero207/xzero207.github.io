@@ -29,13 +29,13 @@
           <div class="bg-gradient-to-br from-emerald-500 to-emerald-700 p-2 rounded-xl shadow-sm group-hover:rotate-12 transition-transform">
             <i data-lucide="leaf" class="w-6 h-6 text-white"></i>
           </div>
-          <span class="font-black text-2xl tracking-tight text-emerald-900">Lacto<span class="text-amber-500">-Calc</span></span>
+          <span class="font-black text-2xl tracking-tight text-emerald-900">Lacto<span class="text-amber-500">-Block</span></span>
         </div>
         
         <div class="hidden md:flex space-x-8">
-          <button onclick="switchView('calculator')" id="nav-calculator" class="nav-btn text-emerald-700 font-bold border-b-2 border-emerald-600 pb-1">Kalkulator</button>
+          <button onclick="switchView('calculator')" id="nav-calculator" class="nav-btn text-emerald-700 font-bold border-b-2 border-emerald-600 pb-1">Lacto-Calc</button>
           <button onclick="switchView('research')" id="nav-research" class="nav-btn text-gray-500 hover:text-emerald-600 font-medium transition-colors pb-1 border-b-2 border-transparent">Riset Kelor & Katuk</button>
-          <button onclick="switchView('about')" id="nav-about" class="nav-btn text-gray-500 hover:text-emerald-600 font-medium transition-colors pb-1 border-b-2 border-transparent">Tentang Kami</button>
+          <button onclick="switchView('about')" id="nav-about" class="nav-btn text-gray-500 hover:text-emerald-600 font-medium transition-colors pb-1 border-b-2 border-transparent">Behind Us</button>
         </div>
         
         <div class="flex items-center gap-4">
@@ -51,9 +51,9 @@
 
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-emerald-100 shadow-xl absolute w-full z-40">
       <div class="flex flex-col px-4 pt-2 pb-4 space-y-1">
-        <button onclick="switchView('calculator')" class="text-left px-4 py-3 rounded-xl font-bold text-emerald-700 bg-emerald-50">Kalkulator</button>
+        <button onclick="switchView('calculator')" class="text-left px-4 py-3 rounded-xl font-bold text-emerald-700 bg-emerald-50">Lacto-Calc</button>
         <button onclick="switchView('research')" class="text-left px-4 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-50">Riset Kelor & Katuk</button>
-        <button onclick="switchView('about')" class="text-left px-4 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-50">Tentang Kami</button>
+        <button onclick="switchView('about')" class="text-left px-4 py-3 rounded-xl font-medium text-gray-600 hover:bg-gray-50">Behind Us</button>
         <button onclick="switchView('shop')" class="text-left px-4 py-3 rounded-xl font-bold text-amber-600 hover:bg-amber-50 flex items-center gap-2">
           <i data-lucide="store" class="w-5 h-5"></i> Shop (Pesan Sekarang)
         </button>
@@ -421,13 +421,16 @@
     }
 
     function switchView(viewName) {
+      // Sembunyikan semua konten
       document.getElementById('view-calculator').classList.add('hidden');
       document.getElementById('view-research').classList.add('hidden');
       document.getElementById('view-about').classList.add('hidden');
       document.getElementById('view-shop').classList.add('hidden');
       
+      // Tampilkan halaman yang dipilih
       document.getElementById('view-' + viewName).classList.remove('hidden');
       
+      // Atur status menu navigasi desktop
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-emerald-700', 'border-emerald-600');
         btn.classList.add('text-gray-500', 'border-transparent');
@@ -438,7 +441,10 @@
         activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
       }
 
+      // Tutup menu seluler jika sedang terbuka
       document.getElementById('mobileMenu').classList.add('hidden');
+      
+      // Gulir halaman ke posisi atas
       window.scrollTo(0, 0);
     }
 
