@@ -160,3 +160,310 @@
                 </div>
                 <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 text-white font-black py-4 px-6 rounded-2xl shadow-xl transition-all flex justify-center items-center gap-3">
                   <span data-i18n="btnCalc">Hitung Resep Pakan</span> <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7" id="results-section">
+            <div id="waitingState" class="bg-white rounded-3xl border-2 border-dashed border-emerald-100 p-12 h-full flex flex-col items-center justify-center text-center">
+              <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mb-6 animate-pulse">
+                <i data-lucide="leaf" class="w-10 h-10 text-emerald-200"></i>
+              </div>
+              <h3 class="text-2xl font-black text-emerald-900 mb-3" data-i18n="waitTitle">Menunggu Data...</h3>
+              <p class="text-gray-500 max-w-sm font-medium" data-i18n="waitSub">Masukkan profil sapi Anda di sebelah kiri. Sistem akan memformulasikan takaran yang tepat.</p>
+            </div>
+
+            <div id="resultState" class="hidden space-y-6 animation-fade-in">
+              
+              <div class="hidden print-header items-center gap-2 mb-6 pb-4 border-b-2 border-gray-200">
+                <i data-lucide="leaf" class="w-8 h-8 text-emerald-600"></i>
+                <span class="font-black text-2xl text-emerald-900">Lacto<span class="text-amber-500">-Calc</span></span>
+                <span class="ml-auto text-sm text-gray-500 font-bold">Laporan Nutrisi Harian</span>
+              </div>
+
+              <div class="bg-white rounded-3xl shadow-xl border border-emerald-50 p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+                  <div class="w-full md:w-1/3">
+                    <div class="relative w-48 h-48 mx-auto">
+                      <svg viewBox="0 0 36 36" class="w-full h-full transform -rotate-90">
+                        <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#f3f4f6" stroke-width="3"></circle>
+                        <circle id="chartForage" cx="18" cy="18" r="15.915" fill="transparent" stroke="#10b981" stroke-width="4"></circle>
+                        <circle id="chartConcentrate" cx="18" cy="18" r="15.915" fill="transparent" stroke="#3b82f6" stroke-width="4"></circle>
+                      </svg>
+                      <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                        <span id="resTotalDM" class="text-3xl font-black text-gray-800">0</span>
+                        <span class="text-xs text-gray-500 font-bold uppercase">Kg Pakan</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-2/3">
+                    <h2 class="text-3xl font-black text-gray-800 mb-3"><span data-i18n="resTitle">Resep</span> <span id="resCowName" class="text-emerald-600"></span></h2>
+                    <p class="text-gray-600 mb-5 font-medium" data-i18n="resDesc">Kalkulasi bahan kering (DM) disesuaikan dengan fase laktasi untuk efisiensi konsentrat.</p>
+                    <div class="flex gap-4">
+                      <span class="text-sm font-bold bg-emerald-50 px-4 py-2 rounded-xl text-emerald-800" data-i18n="tagForage">Hijauan (60%)</span>
+                      <span class="text-sm font-bold bg-blue-50 px-4 py-2 rounded-xl text-blue-800" data-i18n="tagConc">Konsentrat (40%)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-5 mb-8">
+                  <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
+                    <span class="text-emerald-900 font-black text-lg block mb-2" data-i18n="boxForage">Hijauan Kering</span>
+                    <div class="text-4xl font-black text-emerald-600"><span id="resForage">0</span> <span class="text-xl">Kg</span></div>
+                  </div>
+                  <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                    <span class="text-blue-900 font-black text-lg block mb-2" data-i18n="boxConc">Konsentrat</span>
+                    <div class="text-4xl font-black text-blue-600"><span id="resConcentrate">0</span> <span class="text-xl">Kg</span></div>
+                  </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 border-2 border-amber-200">
+                  <h3 class="text-2xl font-black text-amber-900 mb-1" data-i18n="boxBlock">Takaran Lacto-Block</h3>
+                  <div class="text-5xl font-black text-amber-600 mb-5">
+                    <span id="resLactoBlock">0</span> <span class="text-xl font-bold">Gram / Hari</span>
+                  </div>
+                  <ul class="space-y-3 text-sm font-bold text-amber-900/80">
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0"></i> 
+                      <span data-i18n="ben1">Daun Katuk tingkatkan hormon prolaktin.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0"></i> 
+                      <span data-i18n="ben2">Daun Kelor padatkan gizi & turunkan metana.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0"></i> 
+                      <span data-i18n="ben3">Peningkatan Produksi Susu Harian 18,74%.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="mt-8 flex flex-col sm:flex-row gap-4 no-print border-t border-gray-100 pt-6">
+                  <button onclick="shareToWA()" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i> <span data-i18n="btnWA">Kirim ke WhatsApp</span>
+                  </button>
+                  <button onclick="window.print()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors border border-gray-300">
+                    <i data-lucide="download" class="w-5 h-5"></i> <span data-i18n="btnPDF">Simpan PDF</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <div id="cta-section" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 hidden">
+        <div class="bg-emerald-900 rounded-3xl p-10 text-center shadow-2xl relative overflow-hidden">
+          <div class="absolute -top-32 -right-32 w-64 h-64 bg-emerald-600 rounded-full opacity-50 blur-3xl"></div>
+          <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-amber-600 rounded-full opacity-30 blur-3xl"></div>
+          
+          <h3 class="text-3xl font-black text-white mb-4 relative z-10 tracking-tight" data-i18n="ctaTitle">Siap Meraup Profit dari Susu Melimpah?</h3>
+          <p class="text-emerald-100/90 mb-8 max-w-xl mx-auto relative z-10 font-medium text-lg leading-relaxed" data-i18n="ctaSub">
+            Dapatkan Lacto-Block hari ini. Terbukti klinis mampu meningkatkan produksi susu harian hingga 18,74%.
+          </p>
+          <button onclick="switchView('shop')" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black py-4 px-10 rounded-full shadow-xl shadow-amber-500/30 transition-transform hover:scale-105 inline-flex items-center gap-3 relative z-10 text-lg cursor-pointer">
+            <i data-lucide="shopping-cart" class="w-6 h-6"></i> <span data-i18n="ctaBtn">Pesan Lacto-Block Sekarang!</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-research" class="hidden animation-fade-in bg-white">
+      <div class="bg-emerald-900 py-16 text-center px-4">
+        <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Landasan Sains Lacto-Block</h1>
+        <p class="text-emerald-100 max-w-2xl mx-auto text-lg">Keputusan bisnis yang cerdas berawal dari data empiris.</p>
+      </div>
+      <div class="max-w-4xl mx-auto px-4 py-16">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
+          <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="microscope" class="w-8 h-8 text-emerald-600"></i>
+            <h2 class="text-3xl font-black text-gray-800">Bukti Klinis Efektivitas Daun Kelor</h2>
+          </div>
+          <p class="text-gray-600 text-lg mb-8 leading-relaxed">Pemanfaatan Daun Kelor dalam pakan ternak terbukti secara klinis.</p>
+          <ul class="space-y-5 mb-10">
+            <li class="flex items-start gap-4">
+              <div class="bg-emerald-100 p-2 rounded-lg mt-1"><i data-lucide="trending-up" class="w-5 h-5 text-emerald-700"></i></div>
+              <div>
+                <strong class="text-gray-800 block text-lg">Peningkatan Volume & Kualitas Susu</strong>
+                <p class="text-gray-600">Meningkatkan total produksi susu harian beserta protein dan laktosa.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="bg-amber-100 p-2 rounded-lg mt-1"><i data-lucide="activity" class="w-5 h-5 text-amber-700"></i></div>
+              <div>
+                <strong class="text-gray-800 block text-lg">Optimalisasi Pencernaan (Digestibilitas)</strong>
+                <p class="text-gray-600">Sapi mencatatkan tingkat kecernaan DM dan CP yang lebih tinggi.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-about" class="hidden animation-fade-in bg-stone-50">
+      <div class="max-w-5xl mx-auto px-4 py-16">
+        <div class="text-center mb-16">
+          <div class="inline-block bg-gray-900 text-white px-4 py-1 rounded-full text-sm font-bold mb-4 tracking-wider uppercase">Inovator di Balik Layar</div>
+          <h1 class="text-4xl md:text-5xl font-black text-gray-800 mb-4">Tim Kucing Hitam</h1>
+          <p class="text-xl text-emerald-700 font-bold max-w-2xl mx-auto">FEB UNESA</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 flex flex-col items-center text-center">
+            <div class="w-32 h-32 bg-emerald-100 rounded-full flex items-center justify-center mb-6"><i data-lucide="flask-conical" class="w-12 h-12 text-emerald-600"></i></div>
+            <h3 class="text-2xl font-black text-gray-800">Diah Loka Ratna Devi</h3>
+            <span class="text-emerald-600 font-bold mb-4">Spesialis Riset</span>
+          </div>
+          <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-100 flex flex-col items-center text-center">
+            <div class="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center mb-6"><i data-lucide="briefcase" class="w-12 h-12 text-blue-600"></i></div>
+            <h3 class="text-2xl font-black text-gray-800">Romi Ami Safaroz</h3>
+            <span class="text-blue-600 font-bold mb-4">Perencana Bisnis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-shop" class="hidden animation-fade-in bg-stone-50 pb-20">
+      <div class="bg-amber-500 py-16 text-center px-4">
+        <h1 class="text-4xl font-black text-white mb-4">Pesan Lacto-Block</h1>
+      </div>
+      <div class="max-w-5xl mx-auto px-4 mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-8 rounded-3xl shadow-lg relative"><h3 class="text-2xl font-black">E-Commerce (Segera)</h3></div>
+        <div class="bg-white p-8 rounded-3xl shadow-lg relative"><h3 class="text-2xl font-black">WhatsApp B2B</h3></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // 1. Kamus Terjemahan
+    const dictionary = {
+      id: {
+        navCalc: "Kalkulator", navRes: "Riset Kelor & Katuk", navAbout: "Tentang Kami", navShop: "Beli Produk", navShopMobile: "Shop (Pesan Sekarang)",
+        heroBadge: "Kekuatan Daun Kelor & Katuk 100% Organik", heroTitle1: "Hitung Tepat,", heroTitle2: "Susu Melimpah!",
+        heroSub: "AI Kalkulator gizi pertama untuk sapi perah. Hemat konsentrat dan temukan takaran ASI Booster Lacto-Block yang presisi.",
+        formTitle: "Profil Ternak", formSub: "Masukkan data sapi untuk analisa gizi",
+        labelName: "Nama / ID Sapi", labelWeight: "Berat Badan", labelMilk: "Target Produksi (Liter/Hari)", labelPhase: "Fase Laktasi",
+        btnCalc: "Hitung Resep Pakan", waitTitle: "Menunggu Data...", waitSub: "Masukkan profil sapi Anda di sebelah kiri.",
+        resTitle: "Resep", resDesc: "Kalkulasi bahan kering (DM) disesuaikan dengan fase laktasi.",
+        tagForage: "Hijauan (60%)", tagConc: "Konsentrat (40%)", boxForage: "Hijauan Kering", boxConc: "Konsentrat", boxBlock: "Takaran Lacto-Block",
+        ben1: "Daun Katuk tingkatkan hormon prolaktin.", ben2: "Daun Kelor padatkan gizi & turunkan metana.", ben3: "Peningkatan Produksi Susu Harian 18,74%.",
+        btnWA: "Kirim ke WhatsApp", btnPDF: "Simpan PDF",
+        ctaTitle: "Siap Meraup Profit dari Susu Melimpah?", ctaSub: "Dapatkan Lacto-Block hari ini. Terbukti klinis mampu meningkatkan produksi susu harian hingga 18,74%.", ctaBtn: "Pesan Lacto-Block Sekarang!"
+      },
+      jv: {
+        navCalc: "Kalkulator", navRes: "Riset Kelor & Katuk", navAbout: "Babagan Awakdhewe", navShop: "Tuku Produk", navShopMobile: "Shop (Pesen Saiki)",
+        heroBadge: "Kekuatan Godhong Kelor & Katuk 100% Organik", heroTitle1: "Itungan Pas,", heroTitle2: "Susu Turah-turah!",
+        heroSub: "Kalkulator gizi kanggo sapi perah. Hemat konsentrat lan temokake takaran Lacto-Block sing pas.",
+        formTitle: "Profil Kewan", formSub: "Lebokna data sapi kanggo analisa gizi",
+        labelName: "Jeneng Sapi", labelWeight: "Bobot Awak", labelMilk: "Target Produksi (Liter/Dina)", labelPhase: "Fase Laktasi",
+        btnCalc: "Itung Resep Pakan", waitTitle: "Ngenteni Data...", waitSub: "Lebokna profil sapi ing sisih kiwa.",
+        resTitle: "Resep", resDesc: "Kalkulasi pakan disesuaikan karo fase laktasi.",
+        tagForage: "Pakan Ijo (60%)", tagConc: "Konsentrat (40%)", boxForage: "Pakan Ijo", boxConc: "Konsentrat", boxBlock: "Takaran Lacto-Block",
+        ben1: "Godhong Katuk nambah hormon prolaktin.", ben2: "Godhong Kelor nambah gizi & mudhunake metana.", ben3: "Produksi Susu Mundhak 18,74%.",
+        btnWA: "Kirim menyang WhatsApp", btnPDF: "Simpen PDF",
+        ctaTitle: "Siap Oleh Bathi saka Susu Turah?", ctaSub: "Pesen Lacto-Block saiki. Kabukten bisa ngundhakake susu nganti 18,74%.", ctaBtn: "Pesen Lacto-Block Saiki!"
+      },
+      md: {
+        navCalc: "Kalkulator", navRes: "Riset Kelor & Katuk", navAbout: "Parkara Sengko'", navShop: "Melle Produk", navShopMobile: "Shop (Pesen Sateya)",
+        heroBadge: "Kakuwatan Dhaun Kelor & Katuk 100% Organik", heroTitle1: "Etongan Tepat,", heroTitle2: "Soso Bannya'!",
+        heroSub: "Kalkulator gizi kaangguy sapi. Hemat konsentrat ban teppa'na takaran Lacto-Block.",
+        formTitle: "Profil Sapi", formSub: "Pamaso' data sapi kaangguy analisa gizi",
+        labelName: "Nyamana Sapi", labelWeight: "Berrha' Badan", labelMilk: "Target Produksi (Liter/Are)", labelPhase: "Fase Laktasi",
+        btnCalc: "Etong Resep Pakan", waitTitle: "Nantos Data...", waitSub: "Pamaso' profil sapi e bagiyan kacer.",
+        resTitle: "Resep", resDesc: "Etongan pakan esesowayagi ban fase laktasi.",
+        tagForage: "Pakanna Ijo (60%)", tagConc: "Konsentrat (40%)", boxForage: "Pakanna Ijo", boxConc: "Konsentrat", boxBlock: "Takaran Lacto-Block",
+        ben1: "Dhaun Katuk namba hormon prolaktin.", ben2: "Dhaun Kelor namba gizi & toronagi metana.", ben3: "Soso Tamba Bannya' 18,74%.",
+        btnWA: "Karem ka WhatsApp", btnPDF: "Esimpen PDF",
+        ctaTitle: "Sadiya Ngaolle Bathi dhari Soso?", ctaSub: "Pesen Lacto-Block sateya. Mampo namba produksi soso kantos 18,74%.", ctaBtn: "Pesen Lacto-Block Sateya!"
+      }
+    };
+
+    function changeLanguage(lang) {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dictionary[lang][key]) {
+          el.innerText = dictionary[lang][key];
+        }
+      });
+    }
+
+    // 2. Logika Navigasi dan Kalkulator
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+
+    function switchView(viewName) {
+      document.getElementById('view-calculator').classList.add('hidden');
+      document.getElementById('view-research').classList.add('hidden');
+      document.getElementById('view-about').classList.add('hidden');
+      document.getElementById('view-shop').classList.add('hidden');
+      document.getElementById('view-' + viewName).classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    function updateWeightDisplay(value) {
+      document.getElementById('weightDisplay').innerText = value + ' Kg';
+      hideResults();
+    }
+
+    document.querySelectorAll('#calcForm input, #calcForm select').forEach(input => {
+      input.addEventListener('input', hideResults);
+    });
+
+    function hideResults() {
+      document.getElementById('waitingState').classList.remove('hidden');
+      document.getElementById('resultState').classList.add('hidden');
+      document.getElementById('cta-section').classList.add('hidden');
+    }
+
+    document.getElementById('calcForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const cowName = document.getElementById('cowName').value || 'Sapi';
+      const W = parseFloat(document.getElementById('weight').value);
+      const M = parseFloat(document.getElementById('milk').value);
+      const phase = document.getElementById('phase').value;
+
+      const totalDM = (W * 0.02) + (M * 0.3);
+      const forage = totalDM * 0.6;
+      const concentrate = totalDM * 0.4;
+      
+      let blockBase = phase === 'awal' ? 600 : phase === 'tengah' ? 500 : phase === 'akhir' ? 400 : 250;
+      const blockTotalGrams = blockBase + (M * 10);
+
+      document.getElementById('resCowName').innerText = cowName;
+      document.getElementById('resTotalDM').innerText = totalDM.toFixed(1);
+      document.getElementById('resForage').innerText = forage.toFixed(1);
+      document.getElementById('resConcentrate').innerText = concentrate.toFixed(1);
+      document.getElementById('resLactoBlock').innerText = blockTotalGrams.toFixed(0);
+
+      const fPct = (forage / totalDM) * 100;
+      document.getElementById('chartForage').setAttribute('stroke-dasharray', `${fPct} 100`);
+      document.getElementById('chartConcentrate').setAttribute('stroke-dasharray', `${100 - fPct} 100`);
+      document.getElementById('chartConcentrate').setAttribute('stroke-dashoffset', `-${fPct}`);
+
+      document.getElementById('waitingState').classList.add('hidden');
+      document.getElementById('resultState').classList.remove('hidden');
+      document.getElementById('cta-section').classList.remove('hidden');
+      
+      setTimeout(() => { document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' }); }, 100);
+    });
+
+    // 3. Logika WhatsApp
+    function shareToWA() {
+      const cow = document.getElementById('resCowName').innerText;
+      const fg = document.getElementById('resForage').innerText;
+      const cn = document.getElementById('resConcentrate').innerText;
+      const bk = document.getElementById('resLactoBlock').innerText;
+      
+      const text = `*Data Nutrisi Harian Sapi*\n\n🐄 ID/Nama Sapi: ${cow}\n🌿 Hijauan: ${fg} Kg\n🌾 Konsentrat: ${cn} Kg\n🧱 Lacto-Block: ${bk} Gram\n\n*Catatan:* Dihitung menggunakan aplikasi Lacto-Calc. Pastikan air minum selalu tersedia.`;
+      
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
