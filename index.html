@@ -238,7 +238,7 @@
           </div>
           
           <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-            Pemanfaatan Daun Kelor (Moringa oleifera) dalam pakan ternak bukan sekadar tradisi, melainkan intervensi nutrisi yang terbukti secara klinis. Berdasarkan studi yang dipublikasikan dalam <em>Tropical Animal Health and Production</em> (2025), penambahan silase kelor pada ransum pakan sapi perah memberikan dampak signifikan terhadap profitabilitas dan kesehatan ternak.
+            Daun kelor bukan sekadar pakan alternatif peninggalan orang tua dulu. Secara klinis, kelor adalah solusi nutrisi yang teruji efektif untuk memperbaiki kualitas pakan ternak kita. Berdasarkan studi yang dipublikasikan dalam <em>Tropical Animal Health and Production</em> (2025), penambahan silase kelor pada ransum pakan sapi perah memberikan dampak signifikan terhadap profitabilitas dan kesehatan ternak.
           </p>
 
           <h3 class="text-xl font-black text-gray-800 mb-4 border-b pb-2">Temuan Utama Riset</h3>
@@ -421,16 +421,13 @@
     }
 
     function switchView(viewName) {
-      // Sembunyikan semua konten
       document.getElementById('view-calculator').classList.add('hidden');
       document.getElementById('view-research').classList.add('hidden');
       document.getElementById('view-about').classList.add('hidden');
       document.getElementById('view-shop').classList.add('hidden');
       
-      // Tampilkan halaman yang dipilih
       document.getElementById('view-' + viewName).classList.remove('hidden');
       
-      // Atur status menu navigasi desktop
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-emerald-700', 'border-emerald-600');
         btn.classList.add('text-gray-500', 'border-transparent');
@@ -441,10 +438,7 @@
         activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
       }
 
-      // Tutup menu seluler jika sedang terbuka
       document.getElementById('mobileMenu').classList.add('hidden');
-      
-      // Gulir halaman ke posisi atas
       window.scrollTo(0, 0);
     }
 
