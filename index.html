@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lacto-Calc</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animation-fade-in {
+      animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-stone-50 font-sans text-gray-800 selection:bg-emerald-200">
+
+  <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center gap-2 group cursor-pointer">
+          <div class="bg-gradient-to-br from-emerald-500 to-emerald-700 p-2 rounded-xl shadow-sm group-hover:rotate-12 transition-transform">
+            <i data-lucide="leaf" class="w-6 h-6 text-white"></i>
+          </div>
+          <span class="font-black text-2xl tracking-tight text-emerald-900">Lacto<span class="text-amber-500">-Calc</span></span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#" class="text-emerald-700 font-bold border-b-2 border-emerald-600 pb-1">Kalkulator</a>
+          <a href="#" class="text-gray-500 hover:text-emerald-600 font-medium transition-colors">Riset Kelor & Katuk</a>
+          <a href="#" class="text-gray-500 hover:text-emerald-600 font-medium transition-colors">Tentang Kami</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="hidden md:block text-emerald-700 font-bold hover:text-emerald-800 transition-colors">Masuk</button>
+          <button class="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2 rounded-full font-bold transition-colors shadow-md shadow-amber-500/20 flex items-center gap-2 transform hover:-translate-y-0.5">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Beli Produk
+          </button>
+          <button class="md:hidden text-gray-500">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="relative bg-emerald-900 overflow-hidden text-white py-20 px-4">
+    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 -right-24 w-96 h-96 bg-amber-500 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 bg-emerald-800/60 border border-emerald-600/50 text-emerald-100 px-5 py-2 rounded-full text-sm font-bold mb-6 backdrop-blur-sm shadow-lg">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i> Kekuatan Daun Kelor & Daun Katuk 100% Organik
+      </div>
+      <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight tracking-tight">
+        Hitung Tepat, <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">Susu Melimpah!</span>
+      </h1>
+      <p class="text-lg md:text-xl text-emerald-100/90 max-w-2xl mx-auto mb-8 font-medium">
+        AI Kalkulator gizi pertama untuk sapi perah. Hemat konsentrat dan temukan takaran ASI Booster <span class="text-amber-400 font-bold">Lacto-Block</span> yang paling presisi untuk ternak Anda.
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-16 relative z-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <div class="lg:col-span-5">
+        <div class="bg-white rounded-3xl shadow-xl shadow-emerald-900/5 p-6 md:p-8 border border-emerald-50">
+          <div class="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100">
+            <div class="bg-emerald-50 p-3 rounded-2xl">
+              <i data-lucide="calculator" class="w-7 h-7 text-emerald-600"></i>
+            </div>
+            <div>
+              <h2 class="text-2xl font-black text-gray-800">Profil Ternak</h2>
+              <p class="text-sm text-gray-500 font-medium mt-1">Masukkan data sapi untuk analisa gizi</p>
+            </div>
+          </div>
+
+          <form id="calcForm" class="space-y-7">
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-2">Nama / ID Sapi</label>
+              <input type="text" id="cowName" placeholder="Contoh: Sapi Moli" required class="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:ring-0 focus:border-emerald-500 transition-all outline-none bg-gray-50/50 font-medium placeholder-gray-400" />
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-3">
+                <label class="block text-sm font-bold text-gray-700 flex items-center gap-2">
+                  <i data-lucide="scale" class="w-5 h-5 text-emerald-600"></i> Berat Badan (Bobot Hidup)
+                </label>
+                <span class="font-black text-emerald-700 bg-emerald-100 px-3 py-1 rounded-lg text-sm shadow-sm" id="weightDisplay">
+                  400 Kg
+                </span>
+              </div>
+              <input type="range" id="weight" min="200" max="800" step="10" value="400" class="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer accent-emerald-600" oninput="updateWeightDisplay(this.value)" />
+              <div class="flex justify-between text-xs font-bold text-gray-400 mt-2 px-1">
+                <span>200 Kg (Dara)</span>
+                <span>800 Kg (Jumbo)</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                <i data-lucide="droplets" class="w-5 h-5 text-emerald-600"></i> Target Produksi Susu (Liter/Hari)
+              </label>
+              <input type="number" id="milk" min="0" max="50" value="12" placeholder="Contoh: 12" required class="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:ring-0 focus:border-emerald-500 transition-all outline-none bg-gray-50/50 font-medium text-lg" />
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                <i data-lucide="calendar" class="w-5 h-5 text-emerald-600"></i> Fase Laktasi
+              </label>
+              <div class="relative">
+                <select id="phase" class="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:ring-0 focus:border-emerald-500 transition-all outline-none bg-gray-50/50 appearance-none font-bold text-gray-700 cursor-pointer">
+                  <option value="awal">Awal (1 - 100 Hari Pasca Lahir)</option>
+                  <option value="tengah">Tengah (101 - 200 Hari)</option>
+                  <option value="akhir">Akhir (> 200 Hari)</option>
+                  <option value="kering">Kering Kandang (Persiapan Lahir)</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-emerald-600">
+                  <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-black py-4 px-6 rounded-2xl shadow-xl shadow-amber-500/20 transition-all flex justify-center items-center gap-3 group mt-4 transform hover:-translate-y-1">
+              Hitung Resep Pakan 
+              <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7" id="results-section">
+        
+        <div id="waitingState" class="bg-white rounded-3xl shadow-sm border-2 border-dashed border-emerald-100 p-12 h-full flex flex-col items-center justify-center text-center">
+          <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mb-6 animate-pulse">
+            <i data-lucide="leaf" class="w-10 h-10 text-emerald-200"></i>
+          </div>
+          <h3 class="text-2xl font-black text-emerald-900 mb-3">Menunggu Data Sapi...</h3>
+          <p class="text-gray-500 max-w-sm font-medium leading-relaxed">
+            Masukkan profil sapi Anda di sebelah kiri. Sistem kami akan memformulasikan takaran <strong class="text-emerald-700">Daun Kelor & Katuk</strong> yang tepat untuk melipatgandakan keuntungan Anda.
+          </p>
+        </div>
+
+        <div id="resultState" class="hidden space-y-6 animation-fade-in">
+          <div class="bg-white rounded-3xl shadow-xl shadow-emerald-900/5 border border-emerald-50 p-6 md:p-8">
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+              
+              <div class="w-full md:w-1/3">
+                <div class="relative w-48 h-48 mx-auto hover:scale-105 transition-transform duration-300">
+                  <svg viewBox="0 0 36 36" class="w-full h-full transform -rotate-90">
+                    <circle cx="18" cy="18" r="15.91549430918954" fill="transparent" stroke="#f3f4f6" stroke-width="3"></circle>
+                    <circle id="chartForage" cx="18" cy="18" r="15.91549430918954" fill="transparent" stroke="#10b981" stroke-width="4" class="drop-shadow-sm"></circle>
+                    <circle id="chartConcentrate" cx="18" cy="18" r="15.91549430918954" fill="transparent" stroke="#3b82f6" stroke-width="4" class="drop-shadow-sm"></circle>
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <span id="resTotalDM" class="text-3xl font-black text-gray-800">0</span>
+                    <span class="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">Kg Pakan</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="w-full md:w-2/3">
+                <h2 class="text-3xl font-black text-gray-800 mb-3">
+                  Resep Optimal <span id="resCowName" class="text-emerald-600"></span>
+                </h2>
+                <p class="text-gray-600 mb-5 font-medium leading-relaxed">
+                  Kalkulasi bahan kering (DM) disesuaikan dengan fase laktasi untuk efisiensi konsentrat dan mencegah asidosis rumen.
+                </p>
+                <div class="flex gap-6">
+                  <div class="flex items-center gap-3 text-sm font-bold text-gray-700 bg-emerald-50 px-4 py-2 rounded-xl">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-sm"></span> Hijauan (60%)
+                  </div>
+                  <div class="flex items-center gap-3 text-sm font-bold text-gray-700 bg-blue-50 px-4 py-2 rounded-xl">
+                    <span class="w-3 h-3 rounded-full bg-blue-500 shadow-sm"></span> Konsentrat (40%)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+              <div class="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-6 border border-emerald-100 shadow-sm">
+                <div class="flex justify-between items-start mb-3">
+                  <span class="text-emerald-900 font-black tracking-tight text-lg">Hijauan Kering</span>
+                  <i data-lucide="info" class="w-5 h-5 text-emerald-400"></i>
+                </div>
+                <div class="text-4xl font-black text-emerald-600 mb-2">
+                  <span id="resForage">0</span> <span class="text-xl font-bold">Kg</span>
+                </div>
+                <p class="text-sm font-medium text-emerald-700/80">Rumput gajah, tebon jagung, legum.</p>
+              </div>
+
+              <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 border border-blue-100 shadow-sm">
+                <div class="flex justify-between items-start mb-3">
+                  <span class="text-blue-900 font-black tracking-tight text-lg">Konsentrat</span>
+                  <i data-lucide="info" class="w-5 h-5 text-blue-400"></i>
+                </div>
+                <div class="text-4xl font-black text-blue-600 mb-2">
+                  <span id="resConcentrate">0</span> <span class="text-xl font-bold">Kg</span>
+                </div>
+                <p class="text-sm font-medium text-blue-700/80">Dedak, ampas tahu, pakan pabrikan.</p>
+              </div>
+            </div>
+
+            <div class="relative bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 border-2 border-amber-200 shadow-xl shadow-amber-500/10 transform transition-transform hover:-translate-y-1 overflow-hidden">
+              <div class="absolute top-0 right-0 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-black px-4 py-2 rounded-bl-2xl rounded-tr-xl uppercase tracking-widest shadow-md">
+                ASI Booster Esensial
+              </div>
+              <div class="flex flex-col sm:flex-row items-center gap-6 relative z-10">
+                <div class="bg-white p-5 rounded-2xl shadow-md border border-amber-100 flex-shrink-0">
+                  <div class="w-16 h-16 bg-amber-100 rounded-xl flex items-center justify-center border-2 border-amber-300 text-amber-700 font-black text-sm text-center leading-tight shadow-inner">
+                     Lacto<br/>Block
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-2xl font-black text-amber-900 mb-1">Takaran Lacto-Block</h3>
+                  <div class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600 mb-4 tracking-tight">
+                    <span id="resLactoBlock">0</span> <span class="text-xl font-bold text-amber-700">Gram / Hari</span>
+                  </div>
+                  <ul class="space-y-2">
+                    <li class="flex items-start gap-3 text-sm font-bold text-amber-900/80">
+                      <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0"></i> 
+                      <span>Kekuatan <strong class="text-emerald-700">Daun Katuk</strong> tingkatkan hormon prolaktin untuk volume susu ekstra.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm font-bold text-amber-900/80">
+                      <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0"></i> 
+                      <span><strong class="text-emerald-700">Daun Kelor</strong> (Bypass Protein) padatkan kualitas gizi dan turunkan emisi metana.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-emerald-900 rounded-3xl p-10 text-center shadow-2xl relative overflow-hidden mt-6">
+            <div class="absolute -top-32 -right-32 w-64 h-64 bg-emerald-600 rounded-full opacity-50 blur-3xl"></div>
+            <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-amber-600 rounded-full opacity-30 blur-3xl"></div>
+            
+            <h3 class="text-3xl font-black text-white mb-4 relative z-10 tracking-tight">
+              Siap Meraup Profit dari Susu Melimpah?
+            </h3>
+            <p class="text-emerald-100/90 mb-8 max-w-xl mx-auto relative z-10 font-medium text-lg leading-relaxed">
+              Dapatkan Lacto-Block hari ini. <strong class="text-amber-400">100% Organik dengan Daun Kelor & Katuk.</strong> Terbukti klinis mampu meningkatkan produksi susu hingga 18%.
+            </p>
+            <button class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black py-4 px-10 rounded-full shadow-xl shadow-amber-500/30 transition-transform hover:scale-105 inline-flex items-center gap-3 relative z-10 text-lg">
+              <i data-lucide="shopping-cart" class="w-6 h-6"></i> Pesan Lacto-Block Sekarang!
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 mt-16 py-10">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <i data-lucide="leaf" class="w-6 h-6 text-emerald-600"></i>
+        <span class="font-black text-2xl text-emerald-900">Lacto<span class="text-amber-500">-Block</span></span>
+      </div>
+      <p class="text-gray-500 font-medium mb-6 max-w-md mx-auto">
+        Inovasi Pakan Suplemen Berbasis Daun Kelor & Katuk untuk Peternak Indonesia yang Lebih Sejahtera.
+      </p>
+      <div class="text-gray-400 font-bold text-sm tracking-widest uppercase">
+        &copy; 2026 Lacto-Block - IDEACON BPC
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Inisialisasi ikon Lucide
+    lucide.createIcons();
+
+    // Fungsi untuk mengupdate teks berat badan saat slider digeser
+    function updateWeightDisplay(value) {
+      document.getElementById('weightDisplay').innerText = value + ' Kg';
+      hideResults();
+    }
+
+    // Event listener untuk reset hasil jika ada input lain yang berubah
+    document.querySelectorAll('#calcForm input, #calcForm select').forEach(input => {
+      input.addEventListener('input', hideResults);
+    });
+
+    function hideResults() {
+      document.getElementById('waitingState').classList.remove('hidden');
+      document.getElementById('resultState').classList.add('hidden');
+    }
+
+    // Logika Kalkulasi
+    document.getElementById('calcForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const cowName = document.getElementById('cowName').value || 'Sapi Anda';
+      const W = parseFloat(document.getElementById('weight').value);
+      const M = parseFloat(document.getElementById('milk').value);
+      const phase = document.getElementById('phase').value;
+
+      const maintenanceDM = W * 0.02;
+      const productionDM = M * 0.3;
+      const totalDM = maintenanceDM + productionDM;
+
+      const forage = totalDM * 0.6;
+      const concentrate = totalDM * 0.4;
+
+      let blockBase = 500;
+      if (phase === 'awal') blockBase = 600;
+      else if (phase === 'tengah') blockBase = 500;
+      else if (phase === 'akhir') blockBase = 400;
+      else if (phase === 'kering') blockBase = 250;
+
+      const blockTotalGrams = blockBase + (M * 10);
+
+      // Render Hasil ke HTML
+      document.getElementById('resCowName').innerText = cowName;
+      document.getElementById('resTotalDM').innerText = totalDM.toFixed(1);
+      document.getElementById('resForage').innerText = forage.toFixed(1);
+      document.getElementById('resConcentrate').innerText = concentrate.toFixed(1);
+      document.getElementById('resLactoBlock').innerText = blockTotalGrams.toFixed(0);
+
+      // Update Chart SVG
+      const fPct = (forage / totalDM) * 100;
+      const cPct = (concentrate / totalDM) * 100;
+
+      const chartForage = document.getElementById('chartForage');
+      const chartConcentrate = document.getElementById('chartConcentrate');
+
+      chartForage.setAttribute('stroke-dasharray', `${fPct} 100`);
+      chartForage.setAttribute('stroke-dashoffset', '0');
+      
+      chartConcentrate.setAttribute('stroke-dasharray', `${cPct} 100`);
+      chartConcentrate.setAttribute('stroke-dashoffset', `-${fPct}`);
+
+      // Ganti tampilan dari menunggu ke hasil
+      document.getElementById('waitingState').classList.add('hidden');
+      document.getElementById('resultState').classList.remove('hidden');
+
+      // Scroll halus ke bagian hasil
+      setTimeout(() => {
+        document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    });
+  </script>
+</body>
+</html>
+
