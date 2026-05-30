@@ -206,7 +206,7 @@
 
             <div id="resultState" class="hidden space-y-5 animation-fade-in">
               <!-- Area yang akan di-Capture (Screenshot) -->
-              <div id="capture-area" class="bg-white rounded-3xl shadow-xl border border-emerald-50 p-6 md:p-8 relative">
+              <div id="capture-area" class="bg-white rounded-3xl shadow-xl border border-emerald-50 p-6 md:p-8 relative overflow-visible">
                 
                 <!-- Watermark Logo (Sembunyi secara default, muncul saat download) -->
                 <div id="watermark" class="hidden absolute top-6 right-6 opacity-20 flex items-center gap-1 z-0 pointer-events-none">
@@ -251,15 +251,32 @@
 
                 <div class="grid grid-cols-2 gap-5 mb-8 relative z-10">
                   <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
-                    <span class="text-emerald-900 font-black text-lg block mb-2">
-                      <span class="id-text">Hijauan Kering</span><span class="en-text">Dry Forage</span>
-                    </span>
+                    <!-- Penambahan Tooltip Hijauan Kering -->
+                    <div class="flex items-center gap-2 mb-2 relative group cursor-help w-max">
+                      <span class="text-emerald-900 font-black text-lg block">
+                        <span class="id-text">Hijauan Kering</span><span class="en-text">Dry Forage</span>
+                      </span>
+                      <i data-lucide="help-circle" class="w-4 h-4 text-emerald-500"></i>
+                      <div class="absolute bottom-full left-0 mb-2 hidden group-hover:block w-64 p-4 bg-gray-900 text-white text-xs font-medium rounded-xl shadow-xl z-50 pointer-events-none">
+                        <span class="id-text">Pakan serat pokok (seperti rumput gajah, tebon jagung, atau jerami) yang dihitung berdasarkan bobot murninya tanpa kadar air. Berfungsi menjaga kesehatan fungsi lambung sapi. <strong class="text-amber-400 block mt-1">Takaran ini dihitung untuk kebutuhan per hari (24 jam).</strong></span>
+                        <span class="en-text">Staple fiber feed (like elephant grass, corn stover, or straw) calculated by pure weight without water content. Maintains cow rumen health. <strong class="text-amber-400 block mt-1">This dosage is calculated for daily needs (24 hours).</strong></span>
+                      </div>
+                    </div>
                     <div class="text-4xl font-black text-emerald-600"><span id="resForage">0</span> <span class="text-xl">Kg</span></div>
                   </div>
+                  
                   <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100">
-                    <span class="text-blue-900 font-black text-lg block mb-2">
-                      <span class="id-text">Konsentrat</span><span class="en-text">Concentrate</span>
-                    </span>
+                    <!-- Penambahan Tooltip Konsentrat -->
+                    <div class="flex items-center gap-2 mb-2 relative group cursor-help w-max">
+                      <span class="text-blue-900 font-black text-lg block">
+                        <span class="id-text">Konsentrat</span><span class="en-text">Concentrate</span>
+                      </span>
+                      <i data-lucide="help-circle" class="w-4 h-4 text-blue-500"></i>
+                      <div class="absolute bottom-full left-0 mb-2 hidden group-hover:block w-64 p-4 bg-gray-900 text-white text-xs font-medium rounded-xl shadow-xl z-50 pointer-events-none">
+                        <span class="id-text">Pakan penguat padat gizi (seperti ampas tahu, bekatul, atau bungkil) yang kaya protein dan energi. Berfungsi sebagai bahan bakar utama agar sapi mampu memproduksi susu dalam jumlah besar. <strong class="text-amber-400 block mt-1">Takaran ini dihitung untuk kebutuhan per hari (24 jam).</strong></span>
+                        <span class="en-text">Nutrient-dense booster feed (like tofu dregs, bran, or meal) rich in protein and energy. Acts as the main fuel for milk production. <strong class="text-amber-400 block mt-1">This dosage is calculated for daily needs (24 hours).</strong></span>
+                      </div>
+                    </div>
                     <div class="text-4xl font-black text-blue-600"><span id="resConcentrate">0</span> <span class="text-xl">Kg</span></div>
                   </div>
                 </div>
@@ -1140,9 +1157,9 @@
 
       let shareText = '';
       if(isId) {
-        shareText = `*Resep Pakan ${cowName}* 🐄\n\nTotal Pakan: ${totalDM} Kg\n- Hijauan Kering: ${forage} Kg\n- Konsentrat: ${concentrate} Kg\n- ASI Booster Lacto-Block: ${lactoBlock} Gram/Hari\n\nDihitung menggunakan Lacto-Calc. Tingkatkan produksi susu sapi Anda!\n🌐 Cek di: https://lactoblock.id`;
+        shareText = `*Resep Pakan harian ${cowName}* 🐄\n\nTotal Pakan: ${totalDM} Kg\n- Hijauan Kering: ${forage} Kg\n- Konsentrat: ${concentrate} Kg\n- ASI Booster Lacto-Block: ${lactoBlock} Gram/Hari\n\nDihitung menggunakan Lacto-Calc. Tingkatkan produksi susu sapi Anda!\n🌐 Cek di: https://lactoblock.id`;
       } else {
-        shareText = `*Feed Recipe for ${cowName}* 🐄\n\nTotal Feed: ${totalDM} Kg\n- Dry Forage: ${forage} Kg\n- Concentrate: ${concentrate} Kg\n- Lacto-Block Booster: ${lactoBlock} Grams/Day\n\nCalculated using Lacto-Calc. Boost your dairy cow's milk production!\n🌐 Check it out: https://lactoblock.id`;
+        shareText = `*Daily Feed Recipe for ${cowName}* 🐄\n\nTotal Feed: ${totalDM} Kg\n- Dry Forage: ${forage} Kg\n- Concentrate: ${concentrate} Kg\n- Lacto-Block Booster: ${lactoBlock} Grams/Day\n\nCalculated using Lacto-Calc. Boost your dairy cow's milk production!\n🌐 Check it out: https://lactoblock.id`;
       }
 
       if (navigator.share) {
