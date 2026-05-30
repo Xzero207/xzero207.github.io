@@ -554,7 +554,7 @@
       </div>
     </div>
 
-    <!-- HALAMAN 6: EDUKASI (E-LEARNING) -->
+    <!-- HALAMAN 6: EDUKASI (LIST MODUL) -->
     <div id="view-elearning" class="hidden animation-fade-in bg-stone-50 pb-20">
       <div class="bg-emerald-900 py-16 text-center px-4 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center"></div>
@@ -575,14 +575,19 @@
       <div class="max-w-6xl mx-auto px-4 mt-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
-          <!-- Video Modul 1 -->
-          <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
-            <div class="relative w-full pt-[56.25%] bg-gray-200">
-              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/kx7pNFtbOfw" title="Cara Memilih Bibit Sapi Perah Yang Bagus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <!-- Kartu Modul 1 -->
+          <div onclick="switchView('module-1')" class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
+            <div class="relative w-full pt-[56.25%] bg-gray-200 overflow-hidden">
+              <img src="https://img.youtube.com/vi/kx7pNFtbOfw/maxresdefault.jpg" alt="Thumbnail Modul 1" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/10 transition-colors">
+                 <div class="bg-white/90 rounded-full p-4 shadow-lg backdrop-blur-sm group-hover:scale-110 transition-transform">
+                   <i data-lucide="play" class="w-8 h-8 text-emerald-600 ml-1"></i>
+                 </div>
+              </div>
             </div>
             <div class="p-6 flex flex-col flex-grow">
               <span class="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full w-max mb-3">Modul 1</span>
-              <h3 class="text-xl font-black text-gray-800 mb-2 leading-tight">
+              <h3 class="text-xl font-black text-gray-800 mb-2 leading-tight group-hover:text-emerald-700 transition-colors">
                 <span class="id-text">Cara Memilih Bibit Sapi Perah Yang Bagus</span>
                 <span class="en-text">How to Choose Good Dairy Cow Breeds</span>
               </h3>
@@ -593,14 +598,19 @@
             </div>
           </div>
 
-          <!-- Video Modul 2 -->
-          <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
-            <div class="relative w-full pt-[56.25%] bg-gray-200">
-              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/oOsiNhR9_lk" title="Cara Bisnis Sapi Perah Pasti Untung" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <!-- Kartu Modul 2 -->
+          <div onclick="switchView('module-2')" class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
+            <div class="relative w-full pt-[56.25%] bg-gray-200 overflow-hidden">
+              <img src="https://img.youtube.com/vi/oOsiNhR9_lk/maxresdefault.jpg" alt="Thumbnail Modul 2" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/10 transition-colors">
+                 <div class="bg-white/90 rounded-full p-4 shadow-lg backdrop-blur-sm group-hover:scale-110 transition-transform">
+                   <i data-lucide="play" class="w-8 h-8 text-emerald-600 ml-1"></i>
+                 </div>
+              </div>
             </div>
             <div class="p-6 flex flex-col flex-grow">
               <span class="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1 rounded-full w-max mb-3">Modul 2</span>
-              <h3 class="text-xl font-black text-gray-800 mb-2 leading-tight">
+              <h3 class="text-xl font-black text-gray-800 mb-2 leading-tight group-hover:text-amber-700 transition-colors">
                 <span class="id-text">Cara Bisnis Sapi Perah Pasti Untung</span>
                 <span class="en-text">How to Ensure Profit in Dairy Farming</span>
               </h3>
@@ -611,24 +621,134 @@
             </div>
           </div>
 
-          <!-- Video Modul 3 -->
-          <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
-            <div class="relative w-full pt-[56.25%] bg-gray-200">
-              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/l7C15SUhtFQ" title="Tips Bisnis Sapi Perah Susu Melimpah" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <!-- Kartu Modul 3 -->
+          <div onclick="switchView('module-3')" class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group hover:-translate-y-1 transition-transform duration-300">
+            <div class="relative w-full pt-[56.25%] bg-gray-200 overflow-hidden">
+              <img src="https://img.youtube.com/vi/l7C15SUhtFQ/maxresdefault.jpg" alt="Thumbnail Modul 3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/10 transition-colors">
+                 <div class="bg-white/90 rounded-full p-4 shadow-lg backdrop-blur-sm group-hover:scale-110 transition-transform">
+                   <i data-lucide="play" class="w-8 h-8 text-emerald-600 ml-1"></i>
+                 </div>
+              </div>
             </div>
             <div class="p-6 flex flex-col flex-grow">
               <span class="text-xs font-bold text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full w-max mb-3">Modul 3</span>
-              <h3 class="text-xl font-black text-gray-800 mb-2 leading-tight">
+              <h3 class="text-xl font-black text-gray-800 mb-2 leading-tight group-hover:text-blue-700 transition-colors">
                 <span class="id-text">Tips Bisnis Sapi Perah Susu Melimpah</span>
                 <span class="en-text">Tips for Abundant Milk Production</span>
               </h3>
               <p class="text-gray-500 text-sm font-medium mt-auto">
-                <span class="id-text">Manajemen pemeliharaan dan nutrisi yang tepat untuk memaksimalkan hasil produksi susu harian.</span>
-                <span class="en-text">Proper maintenance and nutritional management to maximize daily milk production yield.</span>
+                <span class="id-text">Manajemen pemeliharaan dan nutrisi yang tepat untuk memaksimalkan hasil produksi susu.</span>
+                <span class="en-text">Proper maintenance and nutritional management to maximize milk production yield.</span>
               </p>
             </div>
           </div>
 
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN DETAIL: MODUL 1 -->
+    <div id="view-module-1" class="hidden animation-fade-in bg-stone-50 pb-20">
+      <div class="max-w-4xl mx-auto px-4 py-12">
+        <button onclick="switchView('elearning')" class="mb-6 flex items-center gap-2 text-emerald-700 hover:text-emerald-800 font-bold transition-colors">
+          <i data-lucide="arrow-left" class="w-5 h-5"></i>
+          <span class="id-text">Kembali ke Daftar Edukasi</span><span class="en-text">Back to Education List</span>
+        </button>
+
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 mb-8">
+          <div class="relative w-full pt-[56.25%] bg-black">
+            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/kx7pNFtbOfw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-md border border-gray-100 p-8">
+          <span class="text-sm font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-4 py-1.5 rounded-full inline-block mb-4">Modul 1</span>
+          <h2 class="text-3xl font-black text-gray-800 mb-4">
+            <span class="id-text">Cara Memilih Bibit Sapi Perah Yang Bagus</span>
+            <span class="en-text">How to Choose Good Dairy Cow Breeds</span>
+          </h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            <span class="id-text">Panduan dasar untuk menentukan kualitas genetik dan fisik sapi perah unggulan. Dalam modul ini, Anda akan mempelajari ciri-ciri fisik sapi yang sehat, postur tubuh ideal untuk kapasitas produksi susu yang optimal, serta rekam jejak genetika yang perlu diperhatikan sebelum Anda memutuskan untuk membeli bibit sapi.</span>
+            <span class="en-text">A basic guide to determining the genetic and physical quality of superior dairy cows. In this module, you will learn the physical traits of a healthy cow, the ideal body posture for optimal milk production capacity, and the genetic track records to consider before purchasing dairy breeds.</span>
+          </p>
+          <div class="bg-amber-50 border border-amber-100 rounded-xl p-5 flex items-start gap-4">
+             <i data-lucide="info" class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5"></i>
+             <p class="text-sm font-medium text-amber-800">
+               <span class="id-text">Catatan: Halaman ini nantinya akan dilengkapi dengan teks resume dan poin-poin materi yang lebih terperinci.</span>
+               <span class="en-text">Note: This page will later be updated with a written resume and more detailed material points.</span>
+             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN DETAIL: MODUL 2 -->
+    <div id="view-module-2" class="hidden animation-fade-in bg-stone-50 pb-20">
+      <div class="max-w-4xl mx-auto px-4 py-12">
+        <button onclick="switchView('elearning')" class="mb-6 flex items-center gap-2 text-emerald-700 hover:text-emerald-800 font-bold transition-colors">
+          <i data-lucide="arrow-left" class="w-5 h-5"></i>
+          <span class="id-text">Kembali ke Daftar Edukasi</span><span class="en-text">Back to Education List</span>
+        </button>
+
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 mb-8">
+          <div class="relative w-full pt-[56.25%] bg-black">
+            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/oOsiNhR9_lk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-md border border-gray-100 p-8">
+          <span class="text-sm font-bold text-amber-600 bg-amber-50 border border-amber-100 px-4 py-1.5 rounded-full inline-block mb-4">Modul 2</span>
+          <h2 class="text-3xl font-black text-gray-800 mb-4">
+            <span class="id-text">Cara Bisnis Sapi Perah Pasti Untung</span>
+            <span class="en-text">How to Ensure Profit in Dairy Farming</span>
+          </h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            <span class="id-text">Strategi komersial dan perhitungan efisiensi operasional peternakan agar profitabel. Video ini membahas manajemen keuangan dasar untuk peternak, cara menghitung rasio biaya pakan versus pendapatan penjualan susu, serta tips operasional untuk meminimalisir risiko kerugian di peternakan skala menengah.</span>
+            <span class="en-text">Commercial strategies and operational efficiency calculations for a profitable farm. This video covers basic financial management for farmers, how to calculate the ratio of feed costs versus milk sales revenue, and operational tips to minimize loss risks in medium-scale farms.</span>
+          </p>
+          <div class="bg-amber-50 border border-amber-100 rounded-xl p-5 flex items-start gap-4">
+             <i data-lucide="info" class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5"></i>
+             <p class="text-sm font-medium text-amber-800">
+               <span class="id-text">Catatan: Halaman ini nantinya akan dilengkapi dengan teks resume dan poin-poin materi yang lebih terperinci.</span>
+               <span class="en-text">Note: This page will later be updated with a written resume and more detailed material points.</span>
+             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN DETAIL: MODUL 3 -->
+    <div id="view-module-3" class="hidden animation-fade-in bg-stone-50 pb-20">
+      <div class="max-w-4xl mx-auto px-4 py-12">
+        <button onclick="switchView('elearning')" class="mb-6 flex items-center gap-2 text-emerald-700 hover:text-emerald-800 font-bold transition-colors">
+          <i data-lucide="arrow-left" class="w-5 h-5"></i>
+          <span class="id-text">Kembali ke Daftar Edukasi</span><span class="en-text">Back to Education List</span>
+        </button>
+
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 mb-8">
+          <div class="relative w-full pt-[56.25%] bg-black">
+            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/l7C15SUhtFQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-md border border-gray-100 p-8">
+          <span class="text-sm font-bold text-blue-600 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full inline-block mb-4">Modul 3</span>
+          <h2 class="text-3xl font-black text-gray-800 mb-4">
+            <span class="id-text">Tips Bisnis Sapi Perah Susu Melimpah</span>
+            <span class="en-text">Tips for Abundant Milk Production</span>
+          </h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            <span class="id-text">Manajemen pemeliharaan dan nutrisi yang tepat sangat krusial untuk hasil yang maksimal. Pelajari rutinitas harian yang direkomendasikan, pentingnya keseimbangan antara pakan hijauan dan konsentrat, serta teknik pemeliharaan kandang yang memicu kelancaran produksi susu sapi Anda.</span>
+            <span class="en-text">Proper maintenance and nutritional management are crucial for maximum results. Learn the recommended daily routines, the importance of balancing forage and concentrates, and barn maintenance techniques that trigger smooth milk production for your cows.</span>
+          </p>
+          <div class="bg-amber-50 border border-amber-100 rounded-xl p-5 flex items-start gap-4">
+             <i data-lucide="info" class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5"></i>
+             <p class="text-sm font-medium text-amber-800">
+               <span class="id-text">Catatan: Halaman ini nantinya akan dilengkapi dengan teks resume dan poin-poin materi yang lebih terperinci.</span>
+               <span class="en-text">Note: This page will later be updated with a written resume and more detailed material points.</span>
+             </p>
+          </div>
         </div>
       </div>
     </div>
@@ -858,27 +978,29 @@
     }
 
     function switchView(viewName) {
-      // Sembunyikan semua konten
-      document.getElementById('view-calculator').classList.add('hidden');
-      document.getElementById('view-tentangkami').classList.add('hidden');
-      document.getElementById('view-research').classList.add('hidden');
-      document.getElementById('view-elearning').classList.add('hidden');
-      document.getElementById('view-about').classList.add('hidden');
-      document.getElementById('view-shop').classList.add('hidden');
-      
-      // Tampilkan halaman yang dipilih
-      document.getElementById('view-' + viewName).classList.remove('hidden');
-      
-      // Atur status menu navigasi desktop
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('text-emerald-700', 'border-emerald-600');
-        btn.classList.add('text-gray-500', 'border-transparent');
+      // Sembunyikan semua view yang ada
+      const allViews = ['calculator', 'tentangkami', 'research', 'elearning', 'about', 'shop', 'module-1', 'module-2', 'module-3'];
+      allViews.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        if(el) el.classList.add('hidden');
       });
       
-      const activeBtn = document.getElementById('nav-' + viewName);
-      if(activeBtn) {
-        activeBtn.classList.remove('text-gray-500', 'border-transparent');
-        activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
+      // Tampilkan halaman yang dipilih
+      const targetView = document.getElementById('view-' + viewName);
+      if(targetView) targetView.classList.remove('hidden');
+      
+      // Update status nav-btn khusus untuk menu utama (hindari error saat buka modul detail)
+      if (['calculator', 'tentangkami', 'research', 'elearning', 'about', 'shop'].includes(viewName)) {
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+          btn.classList.remove('text-emerald-700', 'border-emerald-600');
+          btn.classList.add('text-gray-500', 'border-transparent');
+        });
+        
+        const activeBtn = document.getElementById('nav-' + viewName);
+        if(activeBtn) {
+          activeBtn.classList.remove('text-gray-500', 'border-transparent');
+          activeBtn.classList.add('text-emerald-700', 'border-emerald-600');
+        }
       }
 
       // Tutup menu seluler jika sedang terbuka
