@@ -7,8 +7,11 @@
   
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z'/><path d='M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12'/></svg>" />
 
+  <!-- Pustaka Tambahan -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <style>
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
@@ -186,6 +189,7 @@
             </div>
           </div>
 
+          <!-- HASIL KALKULATOR -->
           <div class="lg:col-span-7" id="results-section">
             <div id="waitingState" class="bg-white rounded-3xl border-2 border-dashed border-emerald-100 p-12 h-full flex flex-col items-center justify-center text-center">
               <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mb-6 animate-pulse">
@@ -200,9 +204,16 @@
               </p>
             </div>
 
-            <div id="resultState" class="hidden space-y-6 animation-fade-in">
-              <div class="bg-white rounded-3xl shadow-xl border border-emerald-50 p-6 md:p-8">
-                <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+            <div id="resultState" class="hidden space-y-5 animation-fade-in">
+              <!-- Area yang akan di-Capture (Screenshot) -->
+              <div id="capture-area" class="bg-white rounded-3xl shadow-xl border border-emerald-50 p-6 md:p-8 relative">
+                
+                <!-- Watermark Logo (Sembunyi secara default, muncul saat download) -->
+                <div id="watermark" class="hidden absolute top-6 right-6 opacity-20 flex items-center gap-1 z-0 pointer-events-none">
+                  <span class="font-black text-2xl text-emerald-900 tracking-tight">Lacto<span class="text-amber-500">-Block</span></span>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center gap-8 mb-8 relative z-10">
                   <div class="w-full md:w-1/3">
                     <div class="relative w-48 h-48 mx-auto">
                       <svg viewBox="0 0 36 36" class="w-full h-full transform -rotate-90">
@@ -238,7 +249,7 @@
                   </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-5 mb-8">
+                <div class="grid grid-cols-2 gap-5 mb-8 relative z-10">
                   <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
                     <span class="text-emerald-900 font-black text-lg block mb-2">
                       <span class="id-text">Hijauan Kering</span><span class="en-text">Dry Forage</span>
@@ -253,7 +264,7 @@
                   </div>
                 </div>
 
-                <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 border-2 border-amber-200">
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 border-2 border-amber-200 relative z-10">
                   <h3 class="text-2xl font-black text-amber-900 mb-1">
                     <span class="id-text">Takaran Lacto-Block</span><span class="en-text">Lacto-Block Dosage</span>
                   </h3>
@@ -282,6 +293,19 @@
                   </ul>
                 </div>
               </div>
+
+              <!-- Tombol Aksi (Download & Share) -->
+              <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                <button onclick="downloadResult()" class="flex-1 bg-white hover:bg-emerald-50 border-2 border-emerald-100 text-emerald-800 font-black py-4 px-6 rounded-2xl transition-colors flex items-center justify-center gap-3 shadow-sm hover:shadow-md">
+                  <i data-lucide="download" class="w-5 h-5"></i>
+                  <span class="id-text">Simpan Gambar (JPG)</span><span class="en-text">Save Image (JPG)</span>
+                </button>
+                <button onclick="shareResult()" class="flex-1 bg-white hover:bg-blue-50 border-2 border-blue-100 text-blue-800 font-black py-4 px-6 rounded-2xl transition-colors flex items-center justify-center gap-3 shadow-sm hover:shadow-md">
+                  <i data-lucide="share-2" class="w-5 h-5"></i>
+                  <span class="id-text">Bagikan Resep</span><span class="en-text">Share Recipe</span>
+                </button>
+              </div>
+
             </div>
           </div>
         </div>
@@ -995,7 +1019,7 @@
       const targetView = document.getElementById('view-' + viewName);
       if(targetView) targetView.classList.remove('hidden');
       
-      // Update status nav-btn khusus untuk menu utama (hindari error saat buka modul detail)
+      // Update status nav-btn khusus untuk menu utama
       if (['calculator', 'tentangkami', 'research', 'elearning', 'about', 'shop'].includes(viewName)) {
         document.querySelectorAll('.nav-btn').forEach(btn => {
           btn.classList.remove('text-emerald-700', 'border-emerald-600');
@@ -1031,6 +1055,7 @@
       document.getElementById('cta-section').classList.add('hidden');
     }
 
+    // Fungsi Submit Kalkulator
     document.getElementById('calcForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -1080,6 +1105,56 @@
         document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
       }, 100);
     });
+
+    // Fungsi Download Gambar (JPG)
+    function downloadResult() {
+      const captureArea = document.getElementById('capture-area');
+      const cowName = document.getElementById('cowName').value || 'Sapi';
+      const watermark = document.getElementById('watermark');
+      
+      // Munculkan watermark sebelum memotret
+      watermark.classList.remove('hidden');
+      
+      html2canvas(captureArea, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `Resep-LactoBlock-${cowName.replace(/\s+/g, '-')}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.9);
+        link.click();
+        
+        // Sembunyikan kembali watermark
+        watermark.classList.add('hidden');
+      }).catch(err => {
+        console.error('Gagal mengunduh gambar:', err);
+        watermark.classList.add('hidden');
+      });
+    }
+
+    // Fungsi Share Hasil
+    function shareResult() {
+      const cowName = document.getElementById('resCowName').innerText;
+      const totalDM = document.getElementById('resTotalDM').innerText;
+      const forage = document.getElementById('resForage').innerText;
+      const concentrate = document.getElementById('resConcentrate').innerText;
+      const lactoBlock = document.getElementById('resLactoBlock').innerText;
+      const isId = document.body.classList.contains('lang-id');
+
+      let shareText = '';
+      if(isId) {
+        shareText = `*Resep Pakan ${cowName}* 🐄\n\nTotal Pakan: ${totalDM} Kg\n- Hijauan Kering: ${forage} Kg\n- Konsentrat: ${concentrate} Kg\n- ASI Booster Lacto-Block: ${lactoBlock} Gram/Hari\n\nDihitung menggunakan Lacto-Calc. Tingkatkan produksi susu sapi Anda!\n🌐 Cek di: https://lactoblock.id`;
+      } else {
+        shareText = `*Feed Recipe for ${cowName}* 🐄\n\nTotal Feed: ${totalDM} Kg\n- Dry Forage: ${forage} Kg\n- Concentrate: ${concentrate} Kg\n- Lacto-Block Booster: ${lactoBlock} Grams/Day\n\nCalculated using Lacto-Calc. Boost your dairy cow's milk production!\n🌐 Check it out: https://lactoblock.id`;
+      }
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Resep Pakan Lacto-Block',
+          text: shareText
+        }).catch(console.error);
+      } else {
+        // Fallback jika browser tidak mendukung Web Share API (Diakses via Desktop dll)
+        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(shareText), '_blank');
+      }
+    }
   </script>
 </body>
 </html>
